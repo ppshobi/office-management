@@ -14,7 +14,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return view('course.index')->with([
+            'courses' => Course::all(),
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('course.create');
     }
 
     /**
@@ -35,7 +37,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Course::create([
+            'name' => $request->name,
+            'duration' => $request->duration,
+            'price' => $request->fees,
+        ]);
+
+        return redirect('/course')->with(['flash'=>'Course Added']);
     }
 
     /**

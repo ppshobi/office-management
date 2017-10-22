@@ -21,3 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/course/create', 'CourseController@create');
 Route::post('/course', 'CourseController@store');
 Route::get('/course', 'CourseController@index');
+
+Route::get('/student', 'StudentController@index');
+Route::get('/student/create', 'StudentController@create');
+Route::post('/student', 'StudentController@store');
+

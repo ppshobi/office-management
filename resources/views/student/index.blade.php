@@ -12,20 +12,31 @@
                     <div class="panel-body">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th>Course No</th>
-                                    <th>Course Name</th>
-                                    <th>Course Duration</th>
-                                    <th>Course Fee</th>
-                                </tr>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Course</th>
+                                <th>Join Date</th>
+                                <th>Actions</th>
+                            </tr>
                             </thead>
                             <tbody>
-                            @foreach($students as $key => $student)
+                            @foreach($students as $student)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
-                                    <td>{{ $student->course }}</td>
-                                    <td>{{ $course->price }}</td>
+                                    <td>{{ $student->course->name }}</td>
+                                    <td>{{ $student->created_at->toDateString() }}</td>
+                                    <td>
+                                        <form action="/students/{{ $student->id }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+
+                                            <button class="btn btn-danger" type="submit">Delete</button>
+                                        </form>
+
+                                        <button class="btn btn-info">Update</button>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

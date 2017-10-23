@@ -15,7 +15,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student.index');
+        return view('student.index')->with([
+            'students' => Student::all(),
+        ]);
     }
 
     /**
@@ -59,7 +61,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        dd('Show');
     }
 
     /**
@@ -70,7 +72,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        dd($student);
     }
 
     /**
@@ -93,6 +95,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        session()->flash('status', 'Deleted Student');
+        return redirect('/student');
     }
 }

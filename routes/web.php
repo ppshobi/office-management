@@ -25,4 +25,7 @@ Route::get('/course', 'CourseController@index');
 Route::get('/student', 'StudentController@index');
 Route::get('/student/create', 'StudentController@create');
 Route::post('/student', 'StudentController@store');
+Route::patch('/student/{id}', 'StudentController@update');
+Route::delete('/students/{student}', 'StudentController@destroy');
 
+//Route::resource('student', 'StudentController');

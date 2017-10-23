@@ -14,7 +14,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.index')->with([
+           'staffs' => Staff::all(),
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('staff.create');
     }
 
     /**
@@ -35,7 +37,17 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Staff::create([
+            'name'         => $request->name,
+            'address'      => $request->address,
+            'dob'          => $request->dob,
+            'phone_number' => $request->phone,
+            'salary'       => $request->salary,
+            'designation'  => $request->designation,
+        ]);
+
+        session()->flash('status', 'Staff Created');
+        return redirect('/staff');
     }
 
     /**

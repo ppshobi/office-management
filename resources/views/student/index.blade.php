@@ -28,7 +28,7 @@
                                     <td>{{ $student->course->name }}</td>
                                     <td>{{ $student->created_at->toDateString() }}</td>
                                     <td>
-                                        <form action="/students/{{ $student->id }}" method="POST">
+                                        <form action="/student/{{ $student->id }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 

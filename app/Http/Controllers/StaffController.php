@@ -92,6 +92,8 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        //
+        $staff->delete();
+        session()->flash('status', 'Deleted Staff');
+        return redirect('/staff');
     }
 }

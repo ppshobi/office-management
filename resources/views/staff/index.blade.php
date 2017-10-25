@@ -15,6 +15,9 @@
                             <tr>
                                 <th>Staff ID</th>
                                 <th>Staff Name</th>
+                                <th>Designation</th>
+                                <th>Address</th>
+                                <th>Phone Number</th>
                                 <th>Salary</th>
                                 <th>Actions</th>
                             </tr>
@@ -24,9 +27,12 @@
                                 <tr>
                                     <td>{{ $staff->id }}</td>
                                     <td>{{ $staff->name }}</td>
+                                    <td>{{ $staff->designation }}</td>
+                                    <td>{{ $staff->address }}</td>
+                                    <td>{{ $staff->phone_number }}</td>
                                     <td>{{ $staff->salary }}</td>
                                     <td>
-                                        <form action="/staffs/{{ $staff->id }}" method="POST">
+                                        <form action="/staff/{{ $staff->id }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 

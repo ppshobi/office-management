@@ -6,15 +6,15 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Current Staffs</div>
-                    @if(session('flash'))
-                        <div class="alert alert-success">{{ session('flash') }}</div>
+                    @if(session('status'))
+                        <div class="alert alert-success">{{ session('status') }}</div>
                     @endif
                     <div class="panel-body">
                         <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th>Staff ID</th>
-                                <th>Student Name</th>
+                                <th>Staff Name</th>
                                 <th>Salary</th>
                                 <th>Actions</th>
                             </tr>

@@ -30,3 +30,4 @@ Route::delete('/student/{student}', 'StudentController@destroy');
 
 Route::get('/staff', 'StaffController@index');
 Route::get('/staff/create', 'StaffController@create');
+Route::post('/staff', 'StaffController@store');

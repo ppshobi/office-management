@@ -8,7 +8,7 @@
                     <div class="panel-heading">Add a Staff</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="/staffs">
+                        <form class="form-horizontal" method="POST" action="/staff">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">Staff Name</label>
@@ -89,7 +89,7 @@
                                 <label for="designation" class="col-md-4 control-label">Designation</label>
 
                                 <div class="col-md-6">
-                                    <input id="designation" type="number" class="form-control" name="designation"
+                                    <input id="designation" type="text" class="form-control" name="designation"
                                            placeholder="Enter Designation" required>
 
                                     @if ($errors->has('designation'))

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Staff extends Model
 {
-    //
+    protected $fillable = ['name', 'address', 'dob', 'salary', 'phone_number', 'designation'];
 }

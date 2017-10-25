@@ -16,6 +16,8 @@
                                 <th>Student ID</th>
                                 <th>Student Name</th>
                                 <th>Course</th>
+                                <th>Address</th>
+                                <th>Phone Number</th>
                                 <th>Join Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -26,6 +28,9 @@
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->course->name }}</td>
+                                    <td>{{ $student->address }}</td>
+                                    <td>{{ $student->phone_number }}</td>
+                                    <td>{{ $student->guardians_name }}</td>
                                     <td>{{ $student->created_at->toDateString() }}</td>
                                     <td>
                                         <form action="/student/{{ $student->id }}" method="POST">

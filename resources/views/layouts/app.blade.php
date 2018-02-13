@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-def`ault navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -99,6 +99,9 @@
                 </div>
             </div>
         </nav>
+        @if(session('status'))
+            <div class="alert alert-success">{{ session('status') }}</div>
+        @endif
 
         @yield('content')
     </div>

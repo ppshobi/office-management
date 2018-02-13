@@ -68,7 +68,7 @@
                                 <div class="col-md-6">
                                     <select id="transaction_type" class="form-control" name="transaction_type" required autofocus>
                                         <option value="0"> Select Transaction Type </option>
-                                        @foreach($transactionType as $type)
+                                        @foreach($transactionTypes as $type)
                                             <option value="{{ $type->id }}"> {{ $type->name  }} </option>
                                         @endforeach
                                     </select>

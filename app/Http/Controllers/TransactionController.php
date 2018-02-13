@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use App\Transaction;
+use App\TransactionType;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -24,7 +26,10 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('transactions.create');
+        $students = Student::all();
+        $transactionTypes = TransactionType::all();
+
+        return view('transactions.create', compact(['students', 'transactionTypes']));
     }
 
     /**
@@ -41,6 +46,9 @@ class TransactionController extends Controller
             'date'                => $request->date,
             'transaction_type_id' => $request->transaction_type,
         ]);
+
+        session()->flash('status', 'Transaction Added');
+        return redirect()->back();
     }
 
     /**

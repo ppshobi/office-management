@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('name' , 30);
             $table->date('dob');
             $table->text('address');
-            $table->string('phone_number',12);
+            $table->string('phone_number',15);
             $table->string('guardians_name',30);
             $table->integer('course_id');
             $table->timestamps();

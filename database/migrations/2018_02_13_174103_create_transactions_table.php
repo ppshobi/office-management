@@ -20,6 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('transaction_type_id');
             $table->date('date');
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('student')->onDelete('cascade');
         });
     }
 

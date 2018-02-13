@@ -22,6 +22,9 @@ class CreateStudentsTable extends Migration
             $table->string('guardians_name',100);
             $table->integer('course_id');
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('course')->onDelete('cascade');
+
         });
     }
 

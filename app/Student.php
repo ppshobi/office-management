@@ -12,4 +12,9 @@ class Student extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function transactions()
+    {
+        $this->hasMany('App\Transaction');
+    }
 }

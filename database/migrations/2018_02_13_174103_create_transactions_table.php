@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('amount');
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('transaction_type_id');
+            $table->string('remarks');
             $table->date('date');
             $table->timestamps();
 

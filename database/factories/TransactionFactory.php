@@ -21,6 +21,7 @@ $factory->define(App\Transaction::class, function (Faker $faker) {
         'amount' => $faker->numberBetween(500, 1000),
         'student_id' => factory('App\Student')->create()->id,
         'transaction_type_id' => $faker->randomElement($transactionTypes),
+        'remark' => $faker->sentence(5),
         'date' => $faker->date(),
     ];
 });

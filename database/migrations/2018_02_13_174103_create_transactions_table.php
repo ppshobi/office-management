@@ -21,7 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->date('date');
             $table->timestamps();
 
-            $table->foreign('student_id')->references('id')->on('student')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 

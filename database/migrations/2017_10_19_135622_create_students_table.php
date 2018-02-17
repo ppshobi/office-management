@@ -23,7 +23,7 @@ class CreateStudentsTable extends Migration
             $table->integer('course_id');
             $table->timestamps();
 
-            $table->foreign('course_id')->references('id')->on('course')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses');
 
         });
     }

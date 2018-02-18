@@ -27,7 +27,7 @@ class TransactionTypesSeeder extends Seeder
         foreach ($transactionTypes as $name => $is_credit)
         {
             TransactionType::create([
-                'name' => $transaction,
+                'name' => $name,
                 'is_credit'=> $is_credit,
             ]);
         }

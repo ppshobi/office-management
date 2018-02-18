@@ -17,4 +17,9 @@ class Transaction extends Model
     {
         $this->belongsTo(TransactionType::class);
     }
+
+    public function transactionable()
+    {
+        $this->morphTo();
+    }
 }

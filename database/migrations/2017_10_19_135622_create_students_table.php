@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
             $table->text('address');
             $table->string('phone_number',15);
             $table->string('guardians_name',100);
-            $table->integer('course_id');
+            $table->integer('course_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses');

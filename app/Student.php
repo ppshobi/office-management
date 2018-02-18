@@ -15,6 +15,6 @@ class Student extends Model
 
     public function transactions()
     {
-        $this->hasMany('App\Transaction');
+        return $this->morphMany('App\Transaction', 'transactionable');
     }
 }

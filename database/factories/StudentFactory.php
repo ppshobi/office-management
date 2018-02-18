@@ -21,6 +21,8 @@ $factory->define(App\Student::class, function (Faker $faker) {
         'address'        => $faker->address,
         'phone_number'   => $faker->e164PhoneNumber(),
         'guardians_name' => $faker->name,
-        'course_id'      => factory('App\Course')->create()->id,
+        'course_id'      => function(){
+            return factory('App\Course')->create()->id;
+        },
     ];
 });

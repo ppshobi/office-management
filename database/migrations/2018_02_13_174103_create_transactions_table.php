@@ -16,13 +16,14 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('amount');
-            $table->unsignedInteger('student_id');
-            $table->unsignedInteger('transaction_type_id');
-            $table->string('remarks');
+            $table->string('remark');
+            $table->unsignedInteger('transactionable_id');
+            $table->string('transactionable_type');
+            $table->integer('transaction_type_id')->unsigned();
             $table->date('date');
             $table->timestamps();
 
-            $table->foreign('student_id')->references('id')->on('student')->onDelete('cascade');
+            $table->foreign('transaction_type_id')->references('id')->on('transaction_types');
         });
     }
 

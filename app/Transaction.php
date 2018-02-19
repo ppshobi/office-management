@@ -10,11 +10,16 @@ class Transaction extends Model
 
     public function student()
     {
-        $this->belongsTo(Student::class);
+       return $this->belongsTo(Student::class);
     }
 
     public function type()
     {
-        $this->belongsTo(TransactionType::class);
+        return $this->belongsTo(TransactionType::class);
+    }
+
+    public function transactionable()
+    {
+        return $this->morphTo();
     }
 }

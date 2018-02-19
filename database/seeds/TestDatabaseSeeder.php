@@ -21,13 +21,17 @@ class TestDatabaseSeeder extends Seeder
         // create 10 students under each course
         foreach (App\Course::all() as $course)
         {
-            factory('App\Student', 10)->create(['course_id' => $course->id]);
+            $student = factory('App\Student', 10)->create(['course_id' => $course->id]);
         }
 
-        //create 10 transactions for each student
+        // create 10 transactions for each student
         foreach (\App\Student::all() as $student)
         {
-            factory('App\Transaction', 10)->create(['student_id' => $student->id]);
+            factory('App\Transaction', 10)->create([
+                'transactionable_type' => get_class($student), 
+                'transactionable_id' => $student->id,
+                'transaction_type_id' => 4, 
+            ]);
         }
 
         echo "\nDone Seeding Test Database\n";

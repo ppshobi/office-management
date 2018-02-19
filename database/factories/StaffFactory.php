@@ -13,16 +13,14 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Student::class, function (Faker $faker) {
+$factory->define(App\Staff::class, function (Faker $faker) {
 
     return [
         'name'           => $faker->name,
         'dob'            => $faker->date(),
         'address'        => $faker->address,
         'phone_number'   => $faker->e164PhoneNumber(),
-        'guardians_name' => $faker->name,
-        'course_id'      => function(){
-            return factory('App\Course')->create()->id;
-        },
+        'salary'         => $faker->randomElement([10000, 25000, 15000, 8000,]),
+        'designation'    => $faker->randomElement(['Teacher', 'Teacher', 'Teacher', 'Teacher', 'Principal', 'Helper'])
     ];
 });

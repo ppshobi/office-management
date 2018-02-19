@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransactionType extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name','is_credit'];
 
     public function transactions()
     {

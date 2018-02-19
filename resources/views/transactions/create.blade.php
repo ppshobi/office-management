@@ -9,6 +9,46 @@
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="/transaction">
                             {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Type</label>
+                                <div class="col-md-6">
+                                    <div class="col-md-6">
+                                        <label for="transaction_type_debit" class="control-label">Debit</label>
+                                        <input type="radio" value="0" name="transaction_type"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="transaction_type_credit" class="control-label">Credit</label>
+                                        <input type="radio" value="1" name="transaction_type"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('student_id') ? ' has-error' : '' }}">
+                                <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Category</label>
+                                <div class="col-md-6">
+                                    <select id="transaction_type_id" class="form-control" name="transaction_type_id" required autofocus>
+                                        <div id="debits">
+                                            <option value="0">Select Category</option>
+                                            @foreach($debits as $debit)
+                                                <option value="{{ $debit->id }}"> {{ $debit->name  }} </option>
+                                            @endforeach
+                                        </div>
+                                        <div id="credits">
+                                            <option value="0"> Select Category</option>
+                                            @foreach($credits as $credit)
+                                                <option value="{{ $credit->id }}"> {{ $credit->name  }} </option>
+                                            @endforeach
+                                        </div>
+                                    </select>
+
+                                    @if ($errors->has('transaction_type_id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('transaction_type_id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+
                             <div class="form-group{{ $errors->has('student_id') ? ' has-error' : '' }}">
                                 <label for="student_id" class="col-md-4 control-label">Student Name</label>
 
@@ -60,26 +100,6 @@
                                     @endif
                                 </div>
                             </div>
-
-                            <div class="form-group{{ $errors->has('transaction_type') ? ' has-error' : '' }}">
-                                <label for="transaction_type" class="col-md-4 control-label">Student Name</label>
-
-                                <div class="col-md-6">
-                                    <select id="transaction_type" class="form-control" name="transaction_type" required autofocus>
-                                        <option value="0"> Select Transaction Type </option>
-                                        @foreach($transactionTypes as $type)
-                                            <option value="{{ $type->id }}"> {{ $type->name  }} </option>
-                                        @endforeach
-                                    </select>
-
-                                    @if ($errors->has('transaction_type'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('transaction_type') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">

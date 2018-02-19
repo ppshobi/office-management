@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Staff;
 use App\Student;
 use App\Transaction;
 use App\TransactionType;
@@ -27,9 +28,11 @@ class TransactionController extends Controller
     public function create()
     {
         $students = Student::all();
-        $transactionTypes = TransactionType::all();
+        $staff = Staff::all();
+        $debits = TransactionType::where('is_credit', 0)->get();
+        $credits = TransactionType::where('is_credit', 1)->get();
 
-        return view('transactions.create', compact(['students', 'transactionTypes']));
+        return view('transactions.create', compact(['students', 'staff', 'debits', 'credits']));
     }
 
     /**
@@ -41,10 +44,12 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         Transaction::create([
-            'student_id'          => $request->student_id,
-            'amount'              => $request->amount,
-            'date'                => $request->date,
-            'transaction_type_id' => $request->transaction_type,
+            'amount'                  => $request->amount,
+            'remark'                  => $request->remark,
+            'date'                    => $request->date,
+            'transaction_type_id'     => $request->transaction_type,
+            'transactionable_type'    => $request->transactionable_type,
+            'transactionable_type_id' => $request->transactionable_type_id,
         ]);
 
         session()->flash('status', 'Transaction Added');

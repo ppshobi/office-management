@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12 center-block">
                 <div class="panel panel-default">
                     <div class="panel-heading">Current Students</div>
                     <div class="panel-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" border="1">
                             <thead>
                             <tr>
                                 <th>Student ID</th>
@@ -15,8 +15,9 @@
                                 <th>Course</th>
                                 <th>Address</th>
                                 <th>Phone Number</th>
+                                <th>Guardians Name</th>
                                 <th>Join Date</th>
-                                <th>Actions</th>
+                                <th colspan="3">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,7 +30,7 @@
                                     <td>{{ $student->phone_number }}</td>
                                     <td>{{ $student->guardians_name }}</td>
                                     <td>{{ $student->created_at->toDateString() }}</td>
-                                    <td>
+                                    <td colspan="3">
                                         <form action="/student/{{ $student->id }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
@@ -42,7 +43,9 @@
                                 </tr>
                             @endforeach
                             </tbody>
+
                         </table>
+                        <tfoot>{{ $students->links()  }}</tfoot>
                     </div>
                 </div>
             </div>

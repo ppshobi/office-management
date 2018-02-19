@@ -11,7 +11,7 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Type</label>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="col-md-6">
                                         <label for="transaction_type_debit" class="control-label">Debit</label>
                                         <input type="radio" value="0" name="transaction_type"/>
@@ -63,6 +63,25 @@
                                     @if ($errors->has('student_id'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('student_id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('staff_id') ? ' has-error' : '' }}">
+                                <label for="staff_id" class="col-md-4 control-label">Staff Name</label>
+
+                                <div class="col-md-6">
+                                    <select id="staff_id" class="form-control" name="staff_id" required autofocus>
+                                        <option value="0"> Select Staff </option>
+                                        @foreach($staffs as $staff)
+                                            <option value="{{ $staff->id }}"> {{ $staff->id . " - " . $staff->name  }} </option>
+                                        @endforeach
+                                    </select>
+
+                                    @if ($errors->has('staff_id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('staff_id') }}</strong>
                                     </span>
                                     @endif
                                 </div>

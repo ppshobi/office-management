@@ -28,11 +28,11 @@ class TransactionController extends Controller
     public function create()
     {
         $students = Student::all();
-        $staff = Staff::all();
+        $staffs = Staff::all();
         $debits = TransactionType::where('is_credit', 0)->get();
         $credits = TransactionType::where('is_credit', 1)->get();
 
-        return view('transactions.create', compact(['students', 'staff', 'debits', 'credits']));
+        return view('transactions.create', compact(['students', 'staffs', 'debits', 'credits']));
     }
 
     /**

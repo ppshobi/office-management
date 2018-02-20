@@ -27,16 +27,15 @@
                                     <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Category</label>
                                     <div class="col-md-6">
                                         <select id="transaction_type_id" class="form-control" name="transaction_type_id" required autofocus>
+                                            <option value="0">Select Category</option>
                                             <div id="debits">
-                                                <option value="0">Select Category</option>
                                                 @foreach($debits as $debit)
-                                                    <option value="{{ $debit->id }}"> {{ $debit->name  }} </option>
+                                                    <option data-type="debit" value="{{ $debit->id }}"> {{ $debit->name  }} </option>
                                                 @endforeach
                                             </div>
                                             <div id="credits">
-                                                <option value="0"> Select Category</option>
                                                 @foreach($credits as $credit)
-                                                    <option value="{{ $credit->id }}"> {{ $credit->name  }} </option>
+                                                    <option data-type="debit" value="{{ $credit->id }}"> {{ $credit->name  }} </option>
                                                 @endforeach
                                             </div>
                                         </select>

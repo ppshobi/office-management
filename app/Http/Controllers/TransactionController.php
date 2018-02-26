@@ -41,17 +41,26 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        $transactionable = null;
+        if ($request->student_id)
+        {
+            $transactionable = Student::find($request->student_id);
+        }
+        elseif ($request->staff_id)
+        {
+            $transactionable = Staff::find($request->student_id);
+        }
+
         Transaction::create([
             'amount'                  => $request->amount,
             'remark'                  => $request->remark,
             'date'                    => $request->date,
-            'transaction_type_id'     => $request->transaction_type,
-            'transactionable_type'    => $request->transactionable_type,
-            'transactionable_type_id' => $request->transactionable_type_id,
+            'transaction_type_id'     => $request->transaction_type_id,
+            'transactionable_type'    => $transactionable ? get_class($transactionable) : null,
+            'transactionable_type_id' => $transactionable ? $transactionable->id : null,
         ]);
 
-        session()->flash('status', 'Transaction Added');
-        return redirect()->back();
+        return response()->json(['message' => 'Transaction Added'], 200);
     }
 
     /**

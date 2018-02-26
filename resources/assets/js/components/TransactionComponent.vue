@@ -5,11 +5,11 @@
             <div class="col-md-4">
                 <div class="col-md-6">
                     <label for="transaction_type_debit" class="control-label">Debit</label>
-                    <input type="radio" value="0" name="transaction_type"  @change="transactionTypeChanged"/>
+                    <input type="radio" value="0" v-model="transaction_type" name="transaction_type"  @change="transactionTypeChanged"/>
                 </div>
                 <div class="col-md-6">
                     <label for="transaction_type_credit" class="control-label">Credit</label>
-                    <input type="radio" value="1" name="transaction_type"  @change="transactionTypeChanged"/>
+                    <input type="radio" value="1" v-model="transaction_type" name="transaction_type"  @change="transactionTypeChanged"/>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
          <div id="students" class="form-group" v-if="showStudent">
             <label for="student_id" class="col-md-4 control-label">Student Name</label>
             <div class="col-md-6">
-                <select id="student_id" class="form-control" name="student_id" required autofocus>
+                <select id="student_id" v-model="student_id" class="form-control" name="student_id" required autofocus>
                     <option value="0"> Select Student</option>
                     <option v-for="student in this.students" :value="student.id">
                         {{ student.id }}  -  {{ student.name }}
@@ -39,7 +39,7 @@
         <div id="staffs" class="form-group" v-if="showStaff">
             <label for="staff_id" class="col-md-4 control-label">Staff Name</label>
             <div class="col-md-6">
-                <select id="staff_id" class="form-control" name="staff_id" required autofocus>
+                <select id="staff_id" v-model="staff_id" class="form-control" name="staff_id" required autofocus>
                     <option value="0"> Select Staff</option>
                     <option v-for="staff in this.staffs" :value="staff.id">
                         {{ staff.id }}  -  {{ staff.name }}
@@ -52,7 +52,7 @@
             <label for="amount" class="col-md-4 control-label">Amount</label>
 
             <div class="col-md-6">
-                <input id="amount" type="number" class="form-control" name="amount"
+                <input id="amount" v-model="amount" type="number" class="form-control" name="amount"
                        placeholder="Enter The Amount" required>
             </div>
         </div>
@@ -62,7 +62,7 @@
 
             <div class="col-md-6" id="datetimepicker1">
                 <div class="input-group date">
-                    <input type="date" name="date" class="form-control" value="01/01/2018">
+                    <input type="date" name="date" v-model="date" class="form-control" value="01/01/2018">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th"></span>
                     </div>
@@ -74,7 +74,7 @@
             <label for="remark" class="col-md-4 control-label">Remark</label>
 
             <div class="col-md-6">
-                 <input id="remark" type="text" class="form-control" name="remark"
+                 <input id="remark" type="text" class="form-control" v-model="remark" name="remark"
                         placeholder="Enter Notes" required>
             </div>
         </div>
@@ -99,6 +99,12 @@
                 transactionCategories:null,
                 selectedTransactionType:null,
                 selectedCategory:null,
+                date:new Date('yyyy-mm-dd'),
+                remark:'',
+                amount:0,
+                transaction_type:null,
+                student_id:null,
+                staff_id:null,
 
                 showStudent: false,
                 showStaff:false,
@@ -127,15 +133,17 @@
            submit: function(e) {
                e.preventDefault();
 
-               let data = $('#transaction').serialize();
+               axios.post('/transaction',{
+                   'transaction_type_id': this.selectedCategory,
+                   'date' : this.date,
+                   'amount': this.amount,
+                   'remark': this.remark,
+                   'staff_id': this.staff_id,
+                   'student_id': this.student_id,
 
-               console.log(data);
-
-                axios.post('/transaction',{
-                    data
-                }).then((resp)=>{
-                    toastr.info(resp);
-                });
+               }).then((resp)=>{
+                    toastr.info(resp.data.message);
+               });
            }
         },
 

@@ -10875,7 +10875,8 @@ return jQuery;
             /* WEBPACK VAR INJECTION */
         }.call(exports, __webpack_require__(5)))
 
-        /***/ }),
+        /***/
+    }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11465,7 +11466,7 @@ __webpack_require__(13);
 
 window.Vue = __webpack_require__(36);
         window.$ = __webpack_require__(2);
-        window.toastr = __webpack_require__(44);
+        window.toastr = __webpack_require__(39);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -11473,8 +11474,8 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(39));
-Vue.component('transaction', __webpack_require__(42));
+Vue.component('example-component', __webpack_require__(41));
+        Vue.component('transaction', __webpack_require__(44));
 
 var app = new Vue({
   el: '#app'
@@ -43009,347 +43010,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(10)
-/* script */
-var __vue_script__ = __webpack_require__(40)
-/* template */
-var __vue_template__ = __webpack_require__(41)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
-  } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
-  }
-}
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(10)
-/* script */
-var __vue_script__ = __webpack_require__(43)
-/* template */
-        var __vue_template__ = __webpack_require__(46)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/TransactionComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-18496214", Component.options)
-  } else {
-    hotAPI.reload("data-v-18496214", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-            props: ['categories', 'students', 'staffs'],
-    data: function data() {
-        return {
-            transactionCategories: null,
-            selectedTransactionType: null,
-            selectedCategory: null,
-
-            showStudent: false,
-            showStaff: false,
-            showAmount: false
-        };
-    },
-            mounted: function mounted() {
-            },
-            created: function created() {
-            },
-
-
-    methods: {
-        transactionTypeChanged: function transactionTypeChanged(change) {
-            this.selectedTransactionType = change.target.value;
-            this.reset();
-        },
-
-        reset: function reset() {
-            this.showAmount = this.showStaff = this.showStudent = false;
-        },
-
-        submit: function submit(e) {
-            e.preventDefault();
-
-            var data = $('#transaction').serialize();
-
-            console.log(data);
-
-            axios.post('/transaction', {
-                data: data
-            }).then(function (resp) {
-                toastr.info(resp);
-            });
-        }
-    },
-
-            watch: {
-                selectedTransactionType: function selectedTransactionType() {
-                    if (this.selectedTransactionType == 1) {
-                this.transactionCategories = this.categories.filter(function (category) {
-                    return category.is_credit == 1;
-                });
-            } else {
-                this.transactionCategories = this.categories.filter(function (category) {
-                    return category.is_credit == 0;
-                });
-            }
-                },
-
-                selectedCategory: function selectedCategory(category) {
-                    this.reset();
-
-                    this.showAmount = true;
-
-                    if (category == 4) {
-                        this.showStaff = false;
-                        this.showStudent = true;
-                    }
-
-                    if (category == 8) {
-                        this.showStudent = false;
-                        this.showStaff = true;
-                    }
-                }
-    }
-});
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
         var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
         /*
          * Toastr
@@ -43835,12 +43495,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 })();
             }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
             __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-        }(__webpack_require__(45)));
+        }(__webpack_require__(40)));
 
 
         /***/
     }),
-    /* 45 */
+    /* 40 */
     /***/ (function (module, exports) {
 
         module.exports = function () {
@@ -43850,10 +43510,370 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         /***/
     }),
+    /* 41 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var disposed = false
+        var normalizeComponent = __webpack_require__(10)
+        /* script */
+        var __vue_script__ = __webpack_require__(42)
+        /* template */
+        var __vue_template__ = __webpack_require__(43)
+        /* template functional */
+        var __vue_template_functional__ = false
+        /* styles */
+        var __vue_styles__ = null
+        /* scopeId */
+        var __vue_scopeId__ = null
+        /* moduleIdentifier (server only) */
+        var __vue_module_identifier__ = null
+        var Component = normalizeComponent(
+            __vue_script__,
+            __vue_template__,
+            __vue_template_functional__,
+            __vue_styles__,
+            __vue_scopeId__,
+            __vue_module_identifier__
+        )
+        Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
+
+        /* hot reload */
+        if (false) {
+            (function () {
+                var hotAPI = require("vue-hot-reload-api")
+                hotAPI.install(require("vue"), false)
+                if (!hotAPI.compatible) return
+                module.hot.accept()
+                if (!module.hot.data) {
+                    hotAPI.createRecord("data-v-7168fb6a", Component.options)
+                } else {
+                    hotAPI.reload("data-v-7168fb6a", Component.options)
+                }
+                module.hot.dispose(function (data) {
+                    disposed = true
+                })
+            })()
+        }
+
+        module.exports = Component.exports
+
+
+        /***/
+    }),
+    /* 42 */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        Object.defineProperty(__webpack_exports__, "__esModule", {value: true});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+        /* harmony default export */
+        __webpack_exports__["default"] = ({
+            mounted: function mounted() {
+                console.log('Component mounted.');
+            }
+        });
+
+        /***/
+    }),
+    /* 43 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var render = function () {
+            var _vm = this
+            var _h = _vm.$createElement
+            var _c = _vm._self._c || _h
+            return _vm._m(0)
+        }
+        var staticRenderFns = [
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("div", {staticClass: "container"}, [
+                    _c("div", {staticClass: "row"}, [
+                        _c("div", {staticClass: "col-md-8 col-md-offset-2"}, [
+                            _c("div", {staticClass: "panel panel-default"}, [
+                                _c("div", {staticClass: "panel-heading"}, [
+                                    _vm._v("Example Component")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", {staticClass: "panel-body"}, [
+                                    _vm._v(
+                                        "\n                    I'm an example component!\n                "
+                                    )
+                                ])
+                            ])
+                        ])
+                    ])
+                ])
+            }
+        ]
+        render._withStripped = true
+        module.exports = {render: render, staticRenderFns: staticRenderFns}
+        if (false) {
+            module.hot.accept()
+            if (module.hot.data) {
+                require("vue-hot-reload-api").rerender("data-v-7168fb6a", module.exports)
+            }
+        }
+
+        /***/
+    }),
+    /* 44 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var disposed = false
+        var normalizeComponent = __webpack_require__(10)
+        /* script */
+        var __vue_script__ = __webpack_require__(45)
+        /* template */
+        var __vue_template__ = __webpack_require__(46)
+        /* template functional */
+        var __vue_template_functional__ = false
+        /* styles */
+        var __vue_styles__ = null
+        /* scopeId */
+        var __vue_scopeId__ = null
+        /* moduleIdentifier (server only) */
+        var __vue_module_identifier__ = null
+        var Component = normalizeComponent(
+            __vue_script__,
+            __vue_template__,
+            __vue_template_functional__,
+            __vue_styles__,
+            __vue_scopeId__,
+            __vue_module_identifier__
+        )
+        Component.options.__file = "resources/assets/js/components/TransactionComponent.vue"
+
+        /* hot reload */
+        if (false) {
+            (function () {
+                var hotAPI = require("vue-hot-reload-api")
+                hotAPI.install(require("vue"), false)
+                if (!hotAPI.compatible) return
+                module.hot.accept()
+                if (!module.hot.data) {
+                    hotAPI.createRecord("data-v-18496214", Component.options)
+                } else {
+                    hotAPI.reload("data-v-18496214", Component.options)
+                }
+                module.hot.dispose(function (data) {
+                    disposed = true
+                })
+            })()
+        }
+
+        module.exports = Component.exports
+
+
+        /***/
+    }),
+    /* 45 */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        Object.defineProperty(__webpack_exports__, "__esModule", {value: true});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+        /* harmony default export */
+        __webpack_exports__["default"] = ({
+            props: ['categories', 'students', 'staffs'],
+            data: function data() {
+                return {
+                    transactionCategories: null,
+                    selectedTransactionType: null,
+                    selectedCategory: null,
+                    date: new Date('yyyy-mm-dd'),
+                    remark: '',
+                    amount: 0,
+                    transaction_type: null,
+                    student_id: null,
+                    staff_id: null,
+
+                    showStudent: false,
+                    showStaff: false,
+                    showAmount: false
+                };
+            },
+            mounted: function mounted() {
+            },
+            created: function created() {
+            },
+
+
+            methods: {
+                transactionTypeChanged: function transactionTypeChanged(change) {
+                    this.selectedTransactionType = change.target.value;
+                    this.reset();
+                },
+
+                reset: function reset() {
+                    this.showAmount = this.showStaff = this.showStudent = false;
+                },
+
+                submit: function submit(e) {
+                    e.preventDefault();
+
+                    axios.post('/transaction', {
+                        'transaction_type_id': this.selectedCategory,
+                        'date': this.date,
+                        'amount': this.amount,
+                        'remark': this.remark,
+                        'staff_id': this.staff_id,
+                        'student_id': this.student_id
+
+                    }).then(function (resp) {
+                        toastr.info(resp.data.message);
+                    });
+                }
+            },
+
+            watch: {
+                selectedTransactionType: function selectedTransactionType() {
+                    if (this.selectedTransactionType == 1) {
+                        this.transactionCategories = this.categories.filter(function (category) {
+                            return category.is_credit == 1;
+                        });
+                    } else {
+                        this.transactionCategories = this.categories.filter(function (category) {
+                            return category.is_credit == 0;
+                        });
+                    }
+                },
+
+                selectedCategory: function selectedCategory(category) {
+                    this.reset();
+
+                    this.showAmount = true;
+
+                    if (category == 4) {
+                        this.showStaff = false;
+                        this.showStudent = true;
+                    }
+
+                    if (category == 8) {
+                        this.showStudent = false;
+                        this.showStaff = true;
+                    }
+                }
+            }
+        });
+
+        /***/
+    }),
     /* 46 */
     /***/ (function (module, exports, __webpack_require__) {
 
-        var render = function() {
+        var render = function () {
             var _vm = this
             var _h = _vm.$createElement
             var _c = _vm._self._c || _h
@@ -43883,8 +43903,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 ),
                                 _vm._v(" "),
                                 _c("input", {
+                                    directives: [
+                                        {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.transaction_type,
+                                            expression: "transaction_type"
+                                        }
+                                    ],
                                     attrs: {type: "radio", value: "0", name: "transaction_type"},
-                                    on: {change: _vm.transactionTypeChanged}
+                                    domProps: {checked: _vm._q(_vm.transaction_type, "0")},
+                                    on: {
+                                        change: [
+                                            function ($event) {
+                                                _vm.transaction_type = "0"
+                                            },
+                                            _vm.transactionTypeChanged
+                                        ]
+                                    }
                                 })
                             ]),
                             _vm._v(" "),
@@ -43899,8 +43935,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 ),
                                 _vm._v(" "),
                                 _c("input", {
+                                    directives: [
+                                        {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.transaction_type,
+                                            expression: "transaction_type"
+                                        }
+                                    ],
                                     attrs: {type: "radio", value: "1", name: "transaction_type"},
-                                    on: {change: _vm.transactionTypeChanged}
+                                    domProps: {checked: _vm._q(_vm.transaction_type, "1")},
+                                    on: {
+                                        change: [
+                                            function ($event) {
+                                                _vm.transaction_type = "1"
+                                            },
+                                            _vm.transactionTypeChanged
+                                        ]
+                                    }
                                 })
                             ])
                         ])
@@ -43990,12 +44042,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 _c(
                                     "select",
                                     {
+                                        directives: [
+                                            {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.student_id,
+                                                expression: "student_id"
+                                            }
+                                        ],
                                         staticClass: "form-control",
                                         attrs: {
                                             id: "student_id",
                                             name: "student_id",
                                             required: "",
                                             autofocus: ""
+                                        },
+                                        on: {
+                                            change: function ($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                    .call($event.target.options, function (o) {
+                                                        return o.selected
+                                                    })
+                                                    .map(function (o) {
+                                                        var val = "_value" in o ? o._value : o.value
+                                                        return val
+                                                    })
+                                                _vm.student_id = $event.target.multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                            }
                                         }
                                     },
                                     [
@@ -44036,12 +44111,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 _c(
                                     "select",
                                     {
+                                        directives: [
+                                            {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.staff_id,
+                                                expression: "staff_id"
+                                            }
+                                        ],
                                         staticClass: "form-control",
                                         attrs: {
                                             id: "staff_id",
                                             name: "staff_id",
                                             required: "",
                                             autofocus: ""
+                                        },
+                                        on: {
+                                            change: function ($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                    .call($event.target.options, function (o) {
+                                                        return o.selected
+                                                    })
+                                                    .map(function (o) {
+                                                        var val = "_value" in o ? o._value : o.value
+                                                        return val
+                                                    })
+                                                _vm.staff_id = $event.target.multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                            }
                                         }
                                     },
                                     [
@@ -44078,7 +44176,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 [_vm._v("Amount")]
                             ),
                             _vm._v(" "),
-                            _vm._m(0)
+                            _c("div", {staticClass: "col-md-6"}, [
+                                _c("input", {
+                                    directives: [
+                                        {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.amount,
+                                            expression: "amount"
+                                        }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                        id: "amount",
+                                        type: "number",
+                                        name: "amount",
+                                        placeholder: "Enter The Amount",
+                                        required: ""
+                                    },
+                                    domProps: {value: _vm.amount},
+                                    on: {
+                                        input: function ($event) {
+                                            if ($event.target.composing) {
+                                                return
+                                            }
+                                            _vm.amount = $event.target.value
+                                        }
+                                    }
+                                })
+                            ])
                         ])
                         : _vm._e(),
                     _vm._v(" "),
@@ -44090,7 +44216,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 [_vm._v("Bill Date")]
                             ),
                             _vm._v(" "),
-                            _vm._m(1)
+                            _c(
+                                "div",
+                                {staticClass: "col-md-6", attrs: {id: "datetimepicker1"}},
+                                [
+                                    _c("div", {staticClass: "input-group date"}, [
+                                        _c("input", {
+                                            directives: [
+                                                {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.date,
+                                                    expression: "date"
+                                                }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {type: "date", name: "date", value: "01/01/2018"},
+                                            domProps: {value: _vm.date},
+                                            on: {
+                                                input: function ($event) {
+                                                    if ($event.target.composing) {
+                                                        return
+                                                    }
+                                                    _vm.date = $event.target.value
+                                                }
+                                            }
+                                        }),
+                                        _vm._v(" "),
+                                        _vm._m(0)
+                                    ])
+                                ]
+                            )
                         ])
                         : _vm._e(),
                     _vm._v(" "),
@@ -44105,7 +44261,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 [_vm._v("Remark")]
                             ),
                             _vm._v(" "),
-                            _vm._m(2)
+                            _c("div", {staticClass: "col-md-6"}, [
+                                _c("input", {
+                                    directives: [
+                                        {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.remark,
+                                            expression: "remark"
+                                        }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                        id: "remark",
+                                        type: "text",
+                                        name: "remark",
+                                        placeholder: "Enter Notes",
+                                        required: ""
+                                    },
+                                    domProps: {value: _vm.remark},
+                                    on: {
+                                        input: function ($event) {
+                                            if ($event.target.composing) {
+                                                return
+                                            }
+                                            _vm.remark = $event.target.value
+                                        }
+                                    }
+                                })
+                            ])
                         ])
                         : _vm._e(),
                     _vm._v(" "),
@@ -44132,55 +44316,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var _vm = this
                 var _h = _vm.$createElement
                 var _c = _vm._self._c || _h
-                return _c("div", {staticClass: "col-md-6"}, [
-                    _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                            id: "amount",
-                            type: "number",
-                            name: "amount",
-                            placeholder: "Enter The Amount",
-                            required: ""
-                        }
-                    })
-                ])
-            },
-            function () {
-                var _vm = this
-                var _h = _vm.$createElement
-                var _c = _vm._self._c || _h
-                return _c(
-                    "div",
-                    {staticClass: "col-md-6", attrs: {id: "datetimepicker1"}},
-                    [
-                        _c("div", {staticClass: "input-group date"}, [
-                            _c("input", {
-                                staticClass: "form-control",
-                                attrs: {type: "date", name: "date", value: "01/01/2018"}
-                            }),
-                            _vm._v(" "),
-                            _c("div", {staticClass: "input-group-addon"}, [
-                                _c("span", {staticClass: "glyphicon glyphicon-th"})
-                            ])
-                        ])
-                    ]
-                )
-            },
-            function () {
-                var _vm = this
-                var _h = _vm.$createElement
-                var _c = _vm._self._c || _h
-                return _c("div", {staticClass: "col-md-6"}, [
-                    _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                            id: "remark",
-                            type: "text",
-                            name: "remark",
-                            placeholder: "Enter Notes",
-                            required: ""
-                        }
-                    })
+                return _c("div", {staticClass: "input-group-addon"}, [
+                    _c("span", {staticClass: "glyphicon glyphicon-th"})
                 ])
             }
         ]
@@ -44189,11 +44326,12 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
     module.hot.accept()
     if (module.hot.data) {
-        require("vue-hot-reload-api")      .rerender("data-v-18496214", module.exports)
+        require("vue-hot-reload-api").rerender("data-v-18496214", module.exports)
     }
 }
 
-        /***/ }),
+        /***/
+    }),
     /* 47 */
 /***/ (function(module, exports) {
 

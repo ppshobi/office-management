@@ -7,7 +7,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Add a Transaction</div>
                     <div class="panel-body">
-                        <transaction :categories="{{json_encode($transactionTypes)}}">
+                        <transaction :categories="{{json_encode($transactionTypes)}}"
+                                     :students="{{ json_encode($students) }}"
+                                     :staffs="{{ json_encode($staffs) }}">
 
                         </transaction>
                         {{--<transaction inline-template>--}}
@@ -51,24 +53,7 @@
                         {{--</div>--}}
                         {{--</div>--}}
 
-                        {{--<div id="students" class="form-group{{ $errors->has('student_id') ? ' has-error' : '' }}">--}}
-                        {{--<label for="student_id" class="col-md-4 control-label">Student Name</label>--}}
 
-                        {{--<div class="col-md-6">--}}
-                        {{--<select id="student_id" class="form-control" name="student_id" required autofocus>--}}
-                        {{--<option value="0"> Select Student </option>--}}
-                        {{--@foreach($students as $student)--}}
-                        {{--<option value="{{ $student->id }}"> {{ $student->id . " - " . $student->name  }} </option>--}}
-                        {{--@endforeach--}}
-                        {{--</select>--}}
-
-                        {{--@if ($errors->has('student_id'))--}}
-                        {{--<span class="help-block">--}}
-                        {{--<strong>{{ $errors->first('student_id') }}</strong>--}}
-                        {{--</span>--}}
-                        {{--@endif--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
 
                         {{--<div id="staffs" class="form-group{{ $errors->has('staff_id') ? ' has-error' : '' }}">--}}
                         {{--<label for="staff_id" class="col-md-4 control-label">Staff Name</label>--}}

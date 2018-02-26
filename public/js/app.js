@@ -43201,13 +43201,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-            props: ['categories'],
+            props: ['categories', 'students', 'staffs'],
     data: function data() {
         return {
             transactionCategories: null,
-            selectedTransactionType: null
+            selectedTransactionType: null,
+            selectedCategory: null,
+            showStudent: false,
+            showStaff: false,
+            showAmount: false,
+            showRemark: false
         };
     },
             mounted: function mounted() {
@@ -43218,7 +43235,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         transactionTypeChanged: function transactionTypeChanged(change) {
-            if (change.target.value == 1) {
+            this.selectedTransactionType = change.target.value;
+        }
+    },
+
+            watch: {
+                selectedTransactionType: function selectedTransactionType() {
+                    if (this.selectedTransactionType == 1) {
                 this.transactionCategories = this.categories.filter(function (category) {
                     return category.is_credit == 1;
                 });
@@ -43227,7 +43250,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return category.is_credit == 0;
                 });
             }
-        }
+                },
+
+                selectedCategory: function selectedCategory(category) {
+                    this.showAmount = true;
+                    this.showRemark = true;
+                    if (category == 4) {
+                        console.log(category);
+                        this.showStudent = true;
+                    }
+                    if (category = 8) {
+                        this.showStaff = true;
+                    }
+                }
     }
 });
 
@@ -43309,16 +43344,39 @@ var render = function() {
                         _c(
                             "select",
                             {
+                                directives: [
+                                    {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.selectedCategory,
+                                        expression: "selectedCategory"
+                                    }
+                                ],
                                 staticClass: "form-control",
                                 attrs: {
                                     id: "transaction_type_id",
                                     name: "transaction_type_id",
                                     required: "",
                                     autofocus: ""
+                                },
+                                on: {
+                                    change: function ($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                            .call($event.target.options, function (o) {
+                                                return o.selected
+                                            })
+                                            .map(function (o) {
+                                                var val = "_value" in o ? o._value : o.value
+                                                return val
+                                            })
+                                        _vm.selectedCategory = $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                    }
                                 }
                             },
                             [
-                                _c("option", {attrs: {value: "0"}}, [
+                                _c("option", {attrs: {disabled: "", value: ""}}, [
                                     _vm._v("Select Category")
                                 ]),
                                 _vm._v(" "),
@@ -43335,6 +43393,52 @@ var render = function() {
                     ])
                 ]
                 )
+                : _vm._e(),
+            _vm._v(" "),
+            _vm.showStudent
+                ? _c("div", {staticClass: "form-group", attrs: {id: "students"}}, [
+                    _c(
+                        "label",
+                        {
+                            staticClass: "col-md-4 control-label",
+                            attrs: {for: "student_id"}
+                        },
+                        [_vm._v("Student Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", {staticClass: "col-md-6"}, [
+                        _c(
+                            "select",
+                            {
+                                staticClass: "form-control",
+                                attrs: {
+                                    id: "student_id",
+                                    name: "student_id",
+                                    required: "",
+                                    autofocus: ""
+                                }
+                            },
+                            [
+                                _c("option", {attrs: {value: "0"}}, [
+                                    _vm._v(" Select Student")
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(this.students, function (student) {
+                                    return _c("option", {domProps: {value: student.id}}, [
+                                        _vm._v(
+                                            "\n                    " +
+                                            _vm._s(student.id) +
+                                            "  -  " +
+                                            _vm._s(student.name) +
+                                            "\n                "
+                                        )
+                                    ])
+                                })
+                            ],
+                            2
+                        )
+                    ])
+                ])
                 : _vm._e()
         ]
     )

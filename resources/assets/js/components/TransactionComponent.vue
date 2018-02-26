@@ -17,9 +17,21 @@
         <div id="categories" class="form-group" v-if="this.transactionCategories">
             <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Category</label>
             <div class="col-md-6">
-                <select id="transaction_type_id" class="form-control" name="transaction_type_id" required autofocus>
-                    <option value="0">Select Category</option>
+                <select id="transaction_type_id" v-model="selectedCategory" class="form-control" name="transaction_type_id" required autofocus>
+                    <option disabled value="">Select Category</option>
                     <option v-for="category in this.transactionCategories" :value="category.id" > {{ category.name}} </option>
+                </select>
+            </div>
+        </div>
+
+         <div id="students" class="form-group" v-if="showStudent">
+            <label for="student_id" class="col-md-4 control-label">Student Name</label>
+            <div class="col-md-6">
+                <select id="student_id" class="form-control" name="student_id" required autofocus>
+                    <option value="0"> Select Student</option>
+                    <option v-for="student in this.students" :value="student.id">
+                        {{ student.id }}  -  {{ student.name }}
+                    </option>
                 </select>
             </div>
         </div>
@@ -29,11 +41,16 @@
 
 <script>
     export default {
-        props: ['categories'],
+        props: ['categories', 'students', 'staffs'],
         data() {
             return {
                 transactionCategories:null,
-                selectedTransactionType:null
+                selectedTransactionType:null,
+                selectedCategory:null,
+                showStudent: false,
+                showStaff:false,
+                showAmount:false,
+                showRemark:false,
             }
         },
 
@@ -47,12 +64,30 @@
 
         methods:{
            transactionTypeChanged: function (change) {
-               if(change.target.value == 1) {
-                   this.transactionCategories = this.categories.filter(category => category.is_credit == 1);
-               }else{
-                   this.transactionCategories = this.categories.filter(category => category.is_credit == 0);
-               }
+               this.selectedTransactionType = change.target.value;
            }
+        },
+
+        watch:{
+            selectedTransactionType: function(){
+                 if(this.selectedTransactionType == 1) {
+                       this.transactionCategories = this.categories.filter(category => category.is_credit == 1);
+                 } else {
+                       this.transactionCategories = this.categories.filter(category => category.is_credit == 0);
+                 }
+            },
+
+            selectedCategory: function(category) {
+                this.showAmount = true;
+                this.showRemark = true;
+                if(category == 4) {
+                   console.log(category);
+                   this.showStudent = true;
+                }
+                if(category = 8){
+                   this.showStaff = true;
+                }
+            }
         }
     }
 

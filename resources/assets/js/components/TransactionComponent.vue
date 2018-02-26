@@ -36,6 +36,18 @@
             </div>
         </div>
 
+         <div id="staffs" class="form-group" v-if="showStaff">
+            <label for="staff_id" class="col-md-4 control-label">Staff Name</label>
+            <div class="col-md-6">
+                <select id="staff_id" class="form-control" name="staff_id" required autofocus>
+                    <option value="0"> Select Staff</option>
+                    <option v-for="staff in this.staffs" :value="staff.id">
+                        {{ staff.id }}  -  {{ staff.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
     </form>
 </template>
 
@@ -47,6 +59,7 @@
                 transactionCategories:null,
                 selectedTransactionType:null,
                 selectedCategory:null,
+
                 showStudent: false,
                 showStaff:false,
                 showAmount:false,
@@ -65,6 +78,11 @@
         methods:{
            transactionTypeChanged: function (change) {
                this.selectedTransactionType = change.target.value;
+               this.reset();
+           },
+
+           reset: function () {
+               this.showRemark = this.showAmount = this.showStaff = this.showStudent = false;
            }
         },
 
@@ -78,13 +96,18 @@
             },
 
             selectedCategory: function(category) {
+                this.reset();
+
                 this.showAmount = true;
                 this.showRemark = true;
+
                 if(category == 4) {
-                   console.log(category);
+                   this.showStaff = false;
                    this.showStudent = true;
                 }
-                if(category = 8){
+
+                if(category == 8) {
+                   this.showStudent = false;
                    this.showStaff = true;
                 }
             }

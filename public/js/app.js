@@ -43213,6 +43213,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
             props: ['categories', 'students', 'staffs'],
@@ -43221,6 +43233,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             transactionCategories: null,
             selectedTransactionType: null,
             selectedCategory: null,
+
             showStudent: false,
             showStaff: false,
             showAmount: false,
@@ -43236,6 +43249,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         transactionTypeChanged: function transactionTypeChanged(change) {
             this.selectedTransactionType = change.target.value;
+            this.reset();
+        },
+
+        reset: function reset() {
+            this.showRemark = this.showAmount = this.showStaff = this.showStudent = false;
         }
     },
 
@@ -43253,13 +43271,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 },
 
                 selectedCategory: function selectedCategory(category) {
+                    this.reset();
+
                     this.showAmount = true;
                     this.showRemark = true;
+
                     if (category == 4) {
-                        console.log(category);
+                        this.showStaff = false;
                         this.showStudent = true;
                     }
-                    if (category = 8) {
+
+                    if (category == 8) {
+                        this.showStudent = false;
                         this.showStaff = true;
                     }
                 }
@@ -43430,6 +43453,52 @@ var render = function() {
                                             _vm._s(student.id) +
                                             "  -  " +
                                             _vm._s(student.name) +
+                                            "\n                "
+                                        )
+                                    ])
+                                })
+                            ],
+                            2
+                        )
+                    ])
+                ])
+                : _vm._e(),
+            _vm._v(" "),
+            _vm.showStaff
+                ? _c("div", {staticClass: "form-group", attrs: {id: "staffs"}}, [
+                    _c(
+                        "label",
+                        {
+                            staticClass: "col-md-4 control-label",
+                            attrs: {for: "staff_id"}
+                        },
+                        [_vm._v("Staff Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", {staticClass: "col-md-6"}, [
+                        _c(
+                            "select",
+                            {
+                                staticClass: "form-control",
+                                attrs: {
+                                    id: "staff_id",
+                                    name: "staff_id",
+                                    required: "",
+                                    autofocus: ""
+                                }
+                            },
+                            [
+                                _c("option", {attrs: {value: "0"}}, [
+                                    _vm._v(" Select Staff")
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(this.staffs, function (staff) {
+                                    return _c("option", {domProps: {value: staff.id}}, [
+                                        _vm._v(
+                                            "\n                    " +
+                                            _vm._s(staff.id) +
+                                            "  -  " +
+                                            _vm._s(staff.name) +
                                             "\n                "
                                         )
                                     ])

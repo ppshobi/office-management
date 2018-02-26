@@ -36,7 +36,7 @@
             </div>
         </div>
 
-         <div id="staffs" class="form-group" v-if="showStaff">
+        <div id="staffs" class="form-group" v-if="showStaff">
             <label for="staff_id" class="col-md-4 control-label">Staff Name</label>
             <div class="col-md-6">
                 <select id="staff_id" class="form-control" name="staff_id" required autofocus>
@@ -47,6 +47,46 @@
                 </select>
             </div>
         </div>
+
+        <div class="form-group" v-if="showAmount">
+            <label for="amount" class="col-md-4 control-label">Amount</label>
+
+            <div class="col-md-6">
+                <input id="amount" type="number" class="form-control" name="amount"
+                       placeholder="Enter The Amount" required>
+            </div>
+        </div>
+
+        <div class="form-group" v-if="showAmount">
+            <label for="date" class="col-md-4 control-label">Bill Date</label>
+
+            <div class="col-md-6" id="datetimepicker1">
+                <div class="input-group date">
+                    <input type="date" name="date" class="form-control" value="01/01/2018">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" v-if="showAmount">
+            <label for="remark" class="col-md-4 control-label">Remark</label>
+
+            <div class="col-md-6">
+                 <input id="remark" type="number" class="form-control" name="remark"
+                        placeholder="Enter Notes" required>
+            </div>
+        </div>
+
+        <div class="form-group" v-if="showAmount">
+            <div class="col-md-8 col-md-offset-4">
+                <button type="submit" class="btn btn-primary">
+                    Add Transaction
+                </button>
+            </div>
+        </div>
+
 
     </form>
 </template>
@@ -63,7 +103,6 @@
                 showStudent: false,
                 showStaff:false,
                 showAmount:false,
-                showRemark:false,
             }
         },
 
@@ -82,7 +121,7 @@
            },
 
            reset: function () {
-               this.showRemark = this.showAmount = this.showStaff = this.showStudent = false;
+               this.showAmount = this.showStaff = this.showStudent = false;
            }
         },
 
@@ -99,7 +138,6 @@
                 this.reset();
 
                 this.showAmount = true;
-                this.showRemark = true;
 
                 if(category == 4) {
                    this.showStaff = false;

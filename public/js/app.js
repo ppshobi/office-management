@@ -43225,6 +43225,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
             props: ['categories', 'students', 'staffs'],
@@ -43236,8 +43276,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             showStudent: false,
             showStaff: false,
-            showAmount: false,
-            showRemark: false
+            showAmount: false
         };
     },
             mounted: function mounted() {
@@ -43253,7 +43292,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         reset: function reset() {
-            this.showRemark = this.showAmount = this.showStaff = this.showStudent = false;
+            this.showAmount = this.showStaff = this.showStudent = false;
         }
     },
 
@@ -43274,7 +43313,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.reset();
 
                     this.showAmount = true;
-                    this.showRemark = true;
 
                     if (category == 4) {
                         this.showStaff = false;
@@ -43508,11 +43546,125 @@ var render = function() {
                         )
                     ])
                 ])
+                : _vm._e(),
+            _vm._v(" "),
+            _vm.showAmount
+                ? _c("div", {staticClass: "form-group"}, [
+                    _c(
+                        "label",
+                        {
+                            staticClass: "col-md-4 control-label",
+                            attrs: {for: "amount"}
+                        },
+                        [_vm._v("Amount")]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0)
+                ])
+                : _vm._e(),
+            _vm._v(" "),
+            _vm.showAmount
+                ? _c("div", {staticClass: "form-group"}, [
+                    _c(
+                        "label",
+                        {staticClass: "col-md-4 control-label", attrs: {for: "date"}},
+                        [_vm._v("Bill Date")]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                ])
+                : _vm._e(),
+            _vm._v(" "),
+            _vm.showAmount
+                ? _c("div", {staticClass: "form-group"}, [
+                    _c(
+                        "label",
+                        {
+                            staticClass: "col-md-4 control-label",
+                            attrs: {for: "remark"}
+                        },
+                        [_vm._v("Remark")]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(2)
+                ])
+                : _vm._e(),
+            _vm._v(" "),
+            _vm.showAmount
+                ? _c("div", {staticClass: "form-group"}, [_vm._m(3)])
                 : _vm._e()
         ]
     )
 }
-var staticRenderFns = []
+        var staticRenderFns = [
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("div", {staticClass: "col-md-6"}, [
+                    _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                            id: "amount",
+                            type: "number",
+                            name: "amount",
+                            placeholder: "Enter The Amount",
+                            required: ""
+                        }
+                    })
+                ])
+            },
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c(
+                    "div",
+                    {staticClass: "col-md-6", attrs: {id: "datetimepicker1"}},
+                    [
+                        _c("div", {staticClass: "input-group date"}, [
+                            _c("input", {
+                                staticClass: "form-control",
+                                attrs: {type: "date", name: "date", value: "01/01/2018"}
+                            }),
+                            _vm._v(" "),
+                            _c("div", {staticClass: "input-group-addon"}, [
+                                _c("span", {staticClass: "glyphicon glyphicon-th"})
+                            ])
+                        ])
+                    ]
+                )
+            },
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("div", {staticClass: "col-md-6"}, [
+                    _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                            id: "remark",
+                            type: "number",
+                            name: "remark",
+                            placeholder: "Enter Notes",
+                            required: ""
+                        }
+                    })
+                ])
+            },
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("div", {staticClass: "col-md-8 col-md-offset-4"}, [
+                    _c(
+                        "button",
+                        {staticClass: "btn btn-primary", attrs: {type: "submit"}},
+                        [_vm._v("\n                Add Transaction\n            ")]
+                    )
+                ])
+            }
+        ]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

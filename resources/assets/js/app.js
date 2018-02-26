@@ -8,7 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-window.$   = require('jquery');
+window.$ = require('jquery');
+window.toastr = require('toastr');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

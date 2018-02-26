@@ -404,106 +404,6 @@ module.exports = g;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(21);
-
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(6);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(6);
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
@@ -10871,7 +10771,111 @@ return jQuery;
 } );
 
 
-/***/ }),
+        /***/
+    }),
+    /* 3 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        "use strict";
+        /* WEBPACK VAR INJECTION */
+        (function (process) {
+
+            var utils = __webpack_require__(0);
+            var normalizeHeaderName = __webpack_require__(21);
+
+            var DEFAULT_CONTENT_TYPE = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            };
+
+            function setContentTypeIfUnset(headers, value) {
+                if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+                    headers['Content-Type'] = value;
+                }
+            }
+
+            function getDefaultAdapter() {
+                var adapter;
+                if (typeof XMLHttpRequest !== 'undefined') {
+                    // For browsers use XHR adapter
+                    adapter = __webpack_require__(6);
+                } else if (typeof process !== 'undefined') {
+                    // For node use HTTP adapter
+                    adapter = __webpack_require__(6);
+                }
+                return adapter;
+            }
+
+            var defaults = {
+                adapter: getDefaultAdapter(),
+
+                transformRequest: [function transformRequest(data, headers) {
+                    normalizeHeaderName(headers, 'Content-Type');
+                    if (utils.isFormData(data) ||
+                        utils.isArrayBuffer(data) ||
+                        utils.isBuffer(data) ||
+                        utils.isStream(data) ||
+                        utils.isFile(data) ||
+                        utils.isBlob(data)
+                    ) {
+                        return data;
+                    }
+                    if (utils.isArrayBufferView(data)) {
+                        return data.buffer;
+                    }
+                    if (utils.isURLSearchParams(data)) {
+                        setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+                        return data.toString();
+                    }
+                    if (utils.isObject(data)) {
+                        setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+                        return JSON.stringify(data);
+                    }
+                    return data;
+                }],
+
+                transformResponse: [function transformResponse(data) {
+                    /*eslint no-param-reassign:0*/
+                    if (typeof data === 'string') {
+                        try {
+                            data = JSON.parse(data);
+                        } catch (e) { /* Ignore */
+                        }
+                    }
+                    return data;
+                }],
+
+                timeout: 0,
+
+                xsrfCookieName: 'XSRF-TOKEN',
+                xsrfHeaderName: 'X-XSRF-TOKEN',
+
+                maxContentLength: -1,
+
+                validateStatus: function validateStatus(status) {
+                    return status >= 200 && status < 300;
+                }
+            };
+
+            defaults.headers = {
+                common: {
+                    'Accept': 'application/json, text/plain, */*'
+                }
+            };
+
+            utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+                defaults.headers[method] = {};
+            });
+
+            utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+                defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+            });
+
+            module.exports = defaults;
+
+            /* WEBPACK VAR INJECTION */
+        }.call(exports, __webpack_require__(5)))
+
+        /***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11443,7 +11447,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(45);
+        module.exports = __webpack_require__(47);
 
 
 /***/ }),
@@ -11460,7 +11464,8 @@ module.exports = __webpack_require__(45);
 __webpack_require__(13);
 
 window.Vue = __webpack_require__(36);
-window.$ = __webpack_require__(3);
+        window.$ = __webpack_require__(2);
+        window.toastr = __webpack_require__(44);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -11489,7 +11494,7 @@ window._ = __webpack_require__(14);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(3);
+    window.$ = window.jQuery = __webpack_require__(2);
 
   __webpack_require__(16);
 } catch (e) {}
@@ -31065,7 +31070,7 @@ module.exports = __webpack_require__(18);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(4);
 var Axios = __webpack_require__(20);
-var defaults = __webpack_require__(2);
+        var defaults = __webpack_require__(3);
 
 /**
  * Create an instance of Axios
@@ -31148,7 +31153,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(2);
+        var defaults = __webpack_require__(3);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(29);
 var dispatchRequest = __webpack_require__(30);
@@ -31680,7 +31685,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(31);
 var isCancel = __webpack_require__(8);
-var defaults = __webpack_require__(2);
+        var defaults = __webpack_require__(3);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -43128,7 +43133,7 @@ var normalizeComponent = __webpack_require__(10)
 /* script */
 var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(44)
+        var __vue_template__ = __webpack_require__(46)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43293,6 +43298,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         reset: function reset() {
             this.showAmount = this.showStaff = this.showStudent = false;
+        },
+
+        submit: function submit(e) {
+            e.preventDefault();
+
+            var data = $('#transaction').serialize();
+
+            console.log(data);
+
+            axios.post('/transaction', {
+                data: data
+            }).then(function (resp) {
+                toastr.info(resp);
+            });
         }
     },
 
@@ -43331,271 +43350,783 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-    return _c(
-        "form",
-        {
-            staticClass: "form-horizontal",
-            attrs: {method: "POST", action: "/transaction"}
-        },
-        [
-            _c("div", {staticClass: "form-group"}, [
-                _c(
-                    "label",
-                    {
-                        staticClass: "col-md-4 control-label",
-                        attrs: {for: "transaction_type_debit"}
-                    },
-                    [_vm._v("Select Transaction Type")]
-                ),
-                _vm._v(" "),
-                _c("div", {staticClass: "col-md-4"}, [
-                    _c("div", {staticClass: "col-md-6"}, [
+        var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+        /*
+         * Toastr
+         * Copyright 2012-2015
+         * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
+         * All Rights Reserved.
+         * Use, reproduction, distribution, and modification of this code is subject to the terms and
+         * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+         *
+         * ARIA Support: Greta Krafsig
+         *
+         * Project: https://github.com/CodeSeven/toastr
+         */
+        /* global define */
+        (function (define) {
+            !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+                return (function () {
+                    var $container;
+                    var listener;
+                    var toastId = 0;
+                    var toastType = {
+                        error: 'error',
+                        info: 'info',
+                        success: 'success',
+                        warning: 'warning'
+                    };
+
+                    var toastr = {
+                        clear: clear,
+                        remove: remove,
+                        error: error,
+                        getContainer: getContainer,
+                        info: info,
+                        options: {},
+                        subscribe: subscribe,
+                        success: success,
+                        version: '2.1.4',
+                        warning: warning
+                    };
+
+                    var previousToast;
+
+                    return toastr;
+
+                    ////////////////
+
+                    function error(message, title, optionsOverride) {
+                        return notify({
+                            type: toastType.error,
+                            iconClass: getOptions().iconClasses.error,
+                            message: message,
+                            optionsOverride: optionsOverride,
+                            title: title
+                        });
+                    }
+
+                    function getContainer(options, create) {
+                        if (!options) {
+                            options = getOptions();
+                        }
+                        $container = $('#' + options.containerId);
+                        if ($container.length) {
+                            return $container;
+                        }
+                        if (create) {
+                            $container = createContainer(options);
+                        }
+                        return $container;
+                    }
+
+                    function info(message, title, optionsOverride) {
+                        return notify({
+                            type: toastType.info,
+                            iconClass: getOptions().iconClasses.info,
+                            message: message,
+                            optionsOverride: optionsOverride,
+                            title: title
+                        });
+                    }
+
+                    function subscribe(callback) {
+                        listener = callback;
+                    }
+
+                    function success(message, title, optionsOverride) {
+                        return notify({
+                            type: toastType.success,
+                            iconClass: getOptions().iconClasses.success,
+                            message: message,
+                            optionsOverride: optionsOverride,
+                            title: title
+                        });
+                    }
+
+                    function warning(message, title, optionsOverride) {
+                        return notify({
+                            type: toastType.warning,
+                            iconClass: getOptions().iconClasses.warning,
+                            message: message,
+                            optionsOverride: optionsOverride,
+                            title: title
+                        });
+                    }
+
+                    function clear($toastElement, clearOptions) {
+                        var options = getOptions();
+                        if (!$container) {
+                            getContainer(options);
+                        }
+                        if (!clearToast($toastElement, options, clearOptions)) {
+                            clearContainer(options);
+                        }
+                    }
+
+                    function remove($toastElement) {
+                        var options = getOptions();
+                        if (!$container) {
+                            getContainer(options);
+                        }
+                        if ($toastElement && $(':focus', $toastElement).length === 0) {
+                            removeToast($toastElement);
+                            return;
+                        }
+                        if ($container.children().length) {
+                            $container.remove();
+                        }
+                    }
+
+                    // internal functions
+
+                    function clearContainer(options) {
+                        var toastsToClear = $container.children();
+                        for (var i = toastsToClear.length - 1; i >= 0; i--) {
+                            clearToast($(toastsToClear[i]), options);
+                        }
+                    }
+
+                    function clearToast($toastElement, options, clearOptions) {
+                        var force = clearOptions && clearOptions.force ? clearOptions.force : false;
+                        if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+                            $toastElement[options.hideMethod]({
+                                duration: options.hideDuration,
+                                easing: options.hideEasing,
+                                complete: function () {
+                                    removeToast($toastElement);
+                                }
+                            });
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    function createContainer(options) {
+                        $container = $('<div/>')
+                            .attr('id', options.containerId)
+                            .addClass(options.positionClass);
+
+                        $container.appendTo($(options.target));
+                        return $container;
+                    }
+
+                    function getDefaults() {
+                        return {
+                            tapToDismiss: true,
+                            toastClass: 'toast',
+                            containerId: 'toast-container',
+                            debug: false,
+
+                            showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                            showDuration: 300,
+                            showEasing: 'swing', //swing and linear are built into jQuery
+                            onShown: undefined,
+                            hideMethod: 'fadeOut',
+                            hideDuration: 1000,
+                            hideEasing: 'swing',
+                            onHidden: undefined,
+                            closeMethod: false,
+                            closeDuration: false,
+                            closeEasing: false,
+                            closeOnHover: true,
+
+                            extendedTimeOut: 1000,
+                            iconClasses: {
+                                error: 'toast-error',
+                                info: 'toast-info',
+                                success: 'toast-success',
+                                warning: 'toast-warning'
+                            },
+                            iconClass: 'toast-info',
+                            positionClass: 'toast-top-right',
+                            timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                            titleClass: 'toast-title',
+                            messageClass: 'toast-message',
+                            escapeHtml: false,
+                            target: 'body',
+                            closeHtml: '<button type="button">&times;</button>',
+                            closeClass: 'toast-close-button',
+                            newestOnTop: true,
+                            preventDuplicates: false,
+                            progressBar: false,
+                            progressClass: 'toast-progress',
+                            rtl: false
+                        };
+                    }
+
+                    function publish(args) {
+                        if (!listener) {
+                            return;
+                        }
+                        listener(args);
+                    }
+
+                    function notify(map) {
+                        var options = getOptions();
+                        var iconClass = map.iconClass || options.iconClass;
+
+                        if (typeof (map.optionsOverride) !== 'undefined') {
+                            options = $.extend(options, map.optionsOverride);
+                            iconClass = map.optionsOverride.iconClass || iconClass;
+                        }
+
+                        if (shouldExit(options, map)) {
+                            return;
+                        }
+
+                        toastId++;
+
+                        $container = getContainer(options, true);
+
+                        var intervalId = null;
+                        var $toastElement = $('<div/>');
+                        var $titleElement = $('<div/>');
+                        var $messageElement = $('<div/>');
+                        var $progressElement = $('<div/>');
+                        var $closeElement = $(options.closeHtml);
+                        var progressBar = {
+                            intervalId: null,
+                            hideEta: null,
+                            maxHideTime: null
+                        };
+                        var response = {
+                            toastId: toastId,
+                            state: 'visible',
+                            startTime: new Date(),
+                            options: options,
+                            map: map
+                        };
+
+                        personalizeToast();
+
+                        displayToast();
+
+                        handleEvents();
+
+                        publish(response);
+
+                        if (options.debug && console) {
+                            console.log(response);
+                        }
+
+                        return $toastElement;
+
+                        function escapeHtml(source) {
+                            if (source == null) {
+                                source = '';
+                            }
+
+                            return source
+                                .replace(/&/g, '&amp;')
+                                .replace(/"/g, '&quot;')
+                                .replace(/'/g, '&#39;')
+                                .replace(/</g, '&lt;')
+                                .replace(/>/g, '&gt;');
+                        }
+
+                        function personalizeToast() {
+                            setIcon();
+                            setTitle();
+                            setMessage();
+                            setCloseButton();
+                            setProgressBar();
+                            setRTL();
+                            setSequence();
+                            setAria();
+                        }
+
+                        function setAria() {
+                            var ariaValue = '';
+                            switch (map.iconClass) {
+                                case 'toast-success':
+                                case 'toast-info':
+                                    ariaValue = 'polite';
+                                    break;
+                                default:
+                                    ariaValue = 'assertive';
+                            }
+                            $toastElement.attr('aria-live', ariaValue);
+                        }
+
+                        function handleEvents() {
+                            if (options.closeOnHover) {
+                                $toastElement.hover(stickAround, delayedHideToast);
+                            }
+
+                            if (!options.onclick && options.tapToDismiss) {
+                                $toastElement.click(hideToast);
+                            }
+
+                            if (options.closeButton && $closeElement) {
+                                $closeElement.click(function (event) {
+                                    if (event.stopPropagation) {
+                                        event.stopPropagation();
+                                    } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
+                                        event.cancelBubble = true;
+                                    }
+
+                                    if (options.onCloseClick) {
+                                        options.onCloseClick(event);
+                                    }
+
+                                    hideToast(true);
+                                });
+                            }
+
+                            if (options.onclick) {
+                                $toastElement.click(function (event) {
+                                    options.onclick(event);
+                                    hideToast();
+                                });
+                            }
+                        }
+
+                        function displayToast() {
+                            $toastElement.hide();
+
+                            $toastElement[options.showMethod](
+                                {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
+                            );
+
+                            if (options.timeOut > 0) {
+                                intervalId = setTimeout(hideToast, options.timeOut);
+                                progressBar.maxHideTime = parseFloat(options.timeOut);
+                                progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                                if (options.progressBar) {
+                                    progressBar.intervalId = setInterval(updateProgress, 10);
+                                }
+                            }
+                        }
+
+                        function setIcon() {
+                            if (map.iconClass) {
+                                $toastElement.addClass(options.toastClass).addClass(iconClass);
+                            }
+                        }
+
+                        function setSequence() {
+                            if (options.newestOnTop) {
+                                $container.prepend($toastElement);
+                            } else {
+                                $container.append($toastElement);
+                            }
+                        }
+
+                        function setTitle() {
+                            if (map.title) {
+                                var suffix = map.title;
+                                if (options.escapeHtml) {
+                                    suffix = escapeHtml(map.title);
+                                }
+                                $titleElement.append(suffix).addClass(options.titleClass);
+                                $toastElement.append($titleElement);
+                            }
+                        }
+
+                        function setMessage() {
+                            if (map.message) {
+                                var suffix = map.message;
+                                if (options.escapeHtml) {
+                                    suffix = escapeHtml(map.message);
+                                }
+                                $messageElement.append(suffix).addClass(options.messageClass);
+                                $toastElement.append($messageElement);
+                            }
+                        }
+
+                        function setCloseButton() {
+                            if (options.closeButton) {
+                                $closeElement.addClass(options.closeClass).attr('role', 'button');
+                                $toastElement.prepend($closeElement);
+                            }
+                        }
+
+                        function setProgressBar() {
+                            if (options.progressBar) {
+                                $progressElement.addClass(options.progressClass);
+                                $toastElement.prepend($progressElement);
+                            }
+                        }
+
+                        function setRTL() {
+                            if (options.rtl) {
+                                $toastElement.addClass('rtl');
+                            }
+                        }
+
+                        function shouldExit(options, map) {
+                            if (options.preventDuplicates) {
+                                if (map.message === previousToast) {
+                                    return true;
+                                } else {
+                                    previousToast = map.message;
+                                }
+                            }
+                            return false;
+                        }
+
+                        function hideToast(override) {
+                            var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
+                            var duration = override && options.closeDuration !== false ?
+                                options.closeDuration : options.hideDuration;
+                            var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
+                            if ($(':focus', $toastElement).length && !override) {
+                                return;
+                            }
+                            clearTimeout(progressBar.intervalId);
+                            return $toastElement[method]({
+                                duration: duration,
+                                easing: easing,
+                                complete: function () {
+                                    removeToast($toastElement);
+                                    clearTimeout(intervalId);
+                                    if (options.onHidden && response.state !== 'hidden') {
+                                        options.onHidden();
+                                    }
+                                    response.state = 'hidden';
+                                    response.endTime = new Date();
+                                    publish(response);
+                                }
+                            });
+                        }
+
+                        function delayedHideToast() {
+                            if (options.timeOut > 0 || options.extendedTimeOut > 0) {
+                                intervalId = setTimeout(hideToast, options.extendedTimeOut);
+                                progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
+                                progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                            }
+                        }
+
+                        function stickAround() {
+                            clearTimeout(intervalId);
+                            progressBar.hideEta = 0;
+                            $toastElement.stop(true, true)[options.showMethod](
+                                {duration: options.showDuration, easing: options.showEasing}
+                            );
+                        }
+
+                        function updateProgress() {
+                            var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
+                            $progressElement.width(percentage + '%');
+                        }
+                    }
+
+                    function getOptions() {
+                        return $.extend({}, getDefaults(), toastr.options);
+                    }
+
+                    function removeToast($toastElement) {
+                        if (!$container) {
+                            $container = getContainer();
+                        }
+                        if ($toastElement.is(':visible')) {
+                            return;
+                        }
+                        $toastElement.remove();
+                        $toastElement = null;
+                        if ($container.children().length === 0) {
+                            $container.remove();
+                            previousToast = undefined;
+                        }
+                    }
+
+                })();
+            }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+            __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+        }(__webpack_require__(45)));
+
+
+        /***/
+    }),
+    /* 45 */
+    /***/ (function (module, exports) {
+
+        module.exports = function () {
+            throw new Error("define cannot be used indirect");
+        };
+
+
+        /***/
+    }),
+    /* 46 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var render = function() {
+            var _vm = this
+            var _h = _vm.$createElement
+            var _c = _vm._self._c || _h
+            return _c(
+                "form",
+                {staticClass: "form-horizontal", attrs: {id: "transaction"}},
+                [
+                    _c("div", {staticClass: "form-group"}, [
                         _c(
                             "label",
                             {
-                                staticClass: "control-label",
+                                staticClass: "col-md-4 control-label",
                                 attrs: {for: "transaction_type_debit"}
                             },
-                            [_vm._v("Debit")]
+                            [_vm._v("Select Transaction Type")]
                         ),
                         _vm._v(" "),
-                        _c("input", {
-                            attrs: {type: "radio", value: "0", name: "transaction_type"},
-                            on: {change: _vm.transactionTypeChanged}
-                        })
+                        _c("div", {staticClass: "col-md-4"}, [
+                            _c("div", {staticClass: "col-md-6"}, [
+                                _c(
+                                    "label",
+                                    {
+                                        staticClass: "control-label",
+                                        attrs: {for: "transaction_type_debit"}
+                                    },
+                                    [_vm._v("Debit")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                    attrs: {type: "radio", value: "0", name: "transaction_type"},
+                                    on: {change: _vm.transactionTypeChanged}
+                                })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", {staticClass: "col-md-6"}, [
+                                _c(
+                                    "label",
+                                    {
+                                        staticClass: "control-label",
+                                        attrs: {for: "transaction_type_credit"}
+                                    },
+                                    [_vm._v("Credit")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                    attrs: {type: "radio", value: "1", name: "transaction_type"},
+                                    on: {change: _vm.transactionTypeChanged}
+                                })
+                            ])
+                        ])
                     ]),
                     _vm._v(" "),
-                    _c("div", {staticClass: "col-md-6"}, [
-                        _c(
-                            "label",
-                            {
-                                staticClass: "control-label",
-                                attrs: {for: "transaction_type_credit"}
-                            },
-                            [_vm._v("Credit")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                            attrs: {type: "radio", value: "1", name: "transaction_type"},
-                            on: {change: _vm.transactionTypeChanged}
-                        })
-                    ])
-                ])
-            ]),
-            _vm._v(" "),
-            this.transactionCategories
-                ? _c(
-                "div",
-                {staticClass: "form-group", attrs: {id: "categories"}},
-                [
-                    _c(
-                        "label",
-                        {
-                            staticClass: "col-md-4 control-label",
-                            attrs: {for: "transaction_type_debit"}
-                        },
-                        [_vm._v("Select Transaction Category")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", {staticClass: "col-md-6"}, [
-                        _c(
-                            "select",
-                            {
-                                directives: [
-                                    {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.selectedCategory,
-                                        expression: "selectedCategory"
-                                    }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                    id: "transaction_type_id",
-                                    name: "transaction_type_id",
-                                    required: "",
-                                    autofocus: ""
+                    this.transactionCategories
+                        ? _c(
+                        "div",
+                        {staticClass: "form-group", attrs: {id: "categories"}},
+                        [
+                            _c(
+                                "label",
+                                {
+                                    staticClass: "col-md-4 control-label",
+                                    attrs: {for: "transaction_type_debit"}
                                 },
-                                on: {
-                                    change: function ($event) {
-                                        var $$selectedVal = Array.prototype.filter
-                                            .call($event.target.options, function (o) {
-                                                return o.selected
-                                            })
-                                            .map(function (o) {
-                                                var val = "_value" in o ? o._value : o.value
-                                                return val
-                                            })
-                                        _vm.selectedCategory = $event.target.multiple
-                                            ? $$selectedVal
-                                            : $$selectedVal[0]
-                                    }
-                                }
-                            },
-                            [
-                                _c("option", {attrs: {disabled: "", value: ""}}, [
-                                    _vm._v("Select Category")
-                                ]),
-                                _vm._v(" "),
-                                _vm._l(this.transactionCategories, function (category) {
-                                    return _c(
-                                        "option",
-                                        {domProps: {value: category.id}},
-                                        [_vm._v(" " + _vm._s(category.name) + " ")]
-                                    )
-                                })
-                            ],
-                            2
+                                [_vm._v("Select Transaction Category")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", {staticClass: "col-md-6"}, [
+                                _c(
+                                    "select",
+                                    {
+                                        directives: [
+                                            {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.selectedCategory,
+                                                expression: "selectedCategory"
+                                            }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                            id: "transaction_type_id",
+                                            name: "transaction_type_id",
+                                            required: "",
+                                            autofocus: ""
+                                        },
+                                        on: {
+                                            change: function ($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                    .call($event.target.options, function (o) {
+                                                        return o.selected
+                                                    })
+                                                    .map(function (o) {
+                                                        var val = "_value" in o ? o._value : o.value
+                                                        return val
+                                                    })
+                                                _vm.selectedCategory = $event.target.multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                            }
+                                        }
+                                    },
+                                    [
+                                        _c("option", {attrs: {disabled: "", value: ""}}, [
+                                            _vm._v("Select Category")
+                                        ]),
+                                        _vm._v(" "),
+                                        _vm._l(this.transactionCategories, function (category) {
+                                            return _c(
+                                                "option",
+                                                {domProps: {value: category.id}},
+                                                [_vm._v(" " + _vm._s(category.name) + " ")]
+                                            )
+                                        })
+                                    ],
+                                    2
+                                )
+                            ])
+                        ]
                         )
-                    ])
+                        : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showStudent
+                        ? _c("div", {staticClass: "form-group", attrs: {id: "students"}}, [
+                            _c(
+                                "label",
+                                {
+                                    staticClass: "col-md-4 control-label",
+                                    attrs: {for: "student_id"}
+                                },
+                                [_vm._v("Student Name")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", {staticClass: "col-md-6"}, [
+                                _c(
+                                    "select",
+                                    {
+                                        staticClass: "form-control",
+                                        attrs: {
+                                            id: "student_id",
+                                            name: "student_id",
+                                            required: "",
+                                            autofocus: ""
+                                        }
+                                    },
+                                    [
+                                        _c("option", {attrs: {value: "0"}}, [
+                                            _vm._v(" Select Student")
+                                        ]),
+                                        _vm._v(" "),
+                                        _vm._l(this.students, function (student) {
+                                            return _c("option", {domProps: {value: student.id}}, [
+                                                _vm._v(
+                                                    "\n                    " +
+                                                    _vm._s(student.id) +
+                                                    "  -  " +
+                                                    _vm._s(student.name) +
+                                                    "\n                "
+                                                )
+                                            ])
+                                        })
+                                    ],
+                                    2
+                                )
+                            ])
+                        ])
+                        : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showStaff
+                        ? _c("div", {staticClass: "form-group", attrs: {id: "staffs"}}, [
+                            _c(
+                                "label",
+                                {
+                                    staticClass: "col-md-4 control-label",
+                                    attrs: {for: "staff_id"}
+                                },
+                                [_vm._v("Staff Name")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", {staticClass: "col-md-6"}, [
+                                _c(
+                                    "select",
+                                    {
+                                        staticClass: "form-control",
+                                        attrs: {
+                                            id: "staff_id",
+                                            name: "staff_id",
+                                            required: "",
+                                            autofocus: ""
+                                        }
+                                    },
+                                    [
+                                        _c("option", {attrs: {value: "0"}}, [
+                                            _vm._v(" Select Staff")
+                                        ]),
+                                        _vm._v(" "),
+                                        _vm._l(this.staffs, function (staff) {
+                                            return _c("option", {domProps: {value: staff.id}}, [
+                                                _vm._v(
+                                                    "\n                    " +
+                                                    _vm._s(staff.id) +
+                                                    "  -  " +
+                                                    _vm._s(staff.name) +
+                                                    "\n                "
+                                                )
+                                            ])
+                                        })
+                                    ],
+                                    2
+                                )
+                            ])
+                        ])
+                        : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showAmount
+                        ? _c("div", {staticClass: "form-group"}, [
+                            _c(
+                                "label",
+                                {
+                                    staticClass: "col-md-4 control-label",
+                                    attrs: {for: "amount"}
+                                },
+                                [_vm._v("Amount")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(0)
+                        ])
+                        : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showAmount
+                        ? _c("div", {staticClass: "form-group"}, [
+                            _c(
+                                "label",
+                                {staticClass: "col-md-4 control-label", attrs: {for: "date"}},
+                                [_vm._v("Bill Date")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(1)
+                        ])
+                        : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showAmount
+                        ? _c("div", {staticClass: "form-group"}, [
+                            _c(
+                                "label",
+                                {
+                                    staticClass: "col-md-4 control-label",
+                                    attrs: {for: "remark"}
+                                },
+                                [_vm._v("Remark")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(2)
+                        ])
+                        : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showAmount
+                        ? _c("div", {staticClass: "form-group"}, [
+                            _c("div", {staticClass: "col-md-8 col-md-offset-4"}, [
+                                _c(
+                                    "button",
+                                    {
+                                        staticClass: "btn btn-primary",
+                                        attrs: {type: "submit"},
+                                        on: {click: _vm.submit}
+                                    },
+                                    [_vm._v("\n                Add Transaction\n            ")]
+                                )
+                            ])
+                        ])
+                        : _vm._e()
                 ]
-                )
-                : _vm._e(),
-            _vm._v(" "),
-            _vm.showStudent
-                ? _c("div", {staticClass: "form-group", attrs: {id: "students"}}, [
-                    _c(
-                        "label",
-                        {
-                            staticClass: "col-md-4 control-label",
-                            attrs: {for: "student_id"}
-                        },
-                        [_vm._v("Student Name")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", {staticClass: "col-md-6"}, [
-                        _c(
-                            "select",
-                            {
-                                staticClass: "form-control",
-                                attrs: {
-                                    id: "student_id",
-                                    name: "student_id",
-                                    required: "",
-                                    autofocus: ""
-                                }
-                            },
-                            [
-                                _c("option", {attrs: {value: "0"}}, [
-                                    _vm._v(" Select Student")
-                                ]),
-                                _vm._v(" "),
-                                _vm._l(this.students, function (student) {
-                                    return _c("option", {domProps: {value: student.id}}, [
-                                        _vm._v(
-                                            "\n                    " +
-                                            _vm._s(student.id) +
-                                            "  -  " +
-                                            _vm._s(student.name) +
-                                            "\n                "
-                                        )
-                                    ])
-                                })
-                            ],
-                            2
-                        )
-                    ])
-                ])
-                : _vm._e(),
-            _vm._v(" "),
-            _vm.showStaff
-                ? _c("div", {staticClass: "form-group", attrs: {id: "staffs"}}, [
-                    _c(
-                        "label",
-                        {
-                            staticClass: "col-md-4 control-label",
-                            attrs: {for: "staff_id"}
-                        },
-                        [_vm._v("Staff Name")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", {staticClass: "col-md-6"}, [
-                        _c(
-                            "select",
-                            {
-                                staticClass: "form-control",
-                                attrs: {
-                                    id: "staff_id",
-                                    name: "staff_id",
-                                    required: "",
-                                    autofocus: ""
-                                }
-                            },
-                            [
-                                _c("option", {attrs: {value: "0"}}, [
-                                    _vm._v(" Select Staff")
-                                ]),
-                                _vm._v(" "),
-                                _vm._l(this.staffs, function (staff) {
-                                    return _c("option", {domProps: {value: staff.id}}, [
-                                        _vm._v(
-                                            "\n                    " +
-                                            _vm._s(staff.id) +
-                                            "  -  " +
-                                            _vm._s(staff.name) +
-                                            "\n                "
-                                        )
-                                    ])
-                                })
-                            ],
-                            2
-                        )
-                    ])
-                ])
-                : _vm._e(),
-            _vm._v(" "),
-            _vm.showAmount
-                ? _c("div", {staticClass: "form-group"}, [
-                    _c(
-                        "label",
-                        {
-                            staticClass: "col-md-4 control-label",
-                            attrs: {for: "amount"}
-                        },
-                        [_vm._v("Amount")]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(0)
-                ])
-                : _vm._e(),
-            _vm._v(" "),
-            _vm.showAmount
-                ? _c("div", {staticClass: "form-group"}, [
-                    _c(
-                        "label",
-                        {staticClass: "col-md-4 control-label", attrs: {for: "date"}},
-                        [_vm._v("Bill Date")]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(1)
-                ])
-                : _vm._e(),
-            _vm._v(" "),
-            _vm.showAmount
-                ? _c("div", {staticClass: "form-group"}, [
-                    _c(
-                        "label",
-                        {
-                            staticClass: "col-md-4 control-label",
-                            attrs: {for: "remark"}
-                        },
-                        [_vm._v("Remark")]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(2)
-                ])
-                : _vm._e(),
-            _vm._v(" "),
-            _vm.showAmount
-                ? _c("div", {staticClass: "form-group"}, [_vm._m(3)])
-                : _vm._e()
-        ]
-    )
-}
+            )
+        }
         var staticRenderFns = [
             function () {
                 var _vm = this
@@ -43644,38 +44175,26 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                             id: "remark",
-                            type: "number",
+                            type: "text",
                             name: "remark",
                             placeholder: "Enter Notes",
                             required: ""
                         }
                     })
                 ])
-            },
-            function () {
-                var _vm = this
-                var _h = _vm.$createElement
-                var _c = _vm._self._c || _h
-                return _c("div", {staticClass: "col-md-8 col-md-offset-4"}, [
-                    _c(
-                        "button",
-                        {staticClass: "btn btn-primary", attrs: {type: "submit"}},
-                        [_vm._v("\n                Add Transaction\n            ")]
-                    )
-                ])
             }
         ]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-18496214", module.exports)
-  }
+    module.hot.accept()
+    if (module.hot.data) {
+        require("vue-hot-reload-api")      .rerender("data-v-18496214", module.exports)
+    }
 }
 
-/***/ }),
-/* 45 */
+        /***/ }),
+    /* 47 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

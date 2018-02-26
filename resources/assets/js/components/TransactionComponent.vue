@@ -1,5 +1,5 @@
 <template>
-    <form class="form-horizontal" method="POST" action="/transaction">
+    <form class="form-horizontal" id="transaction">
         <div class="form-group">
             <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Type</label>
             <div class="col-md-4">
@@ -74,14 +74,14 @@
             <label for="remark" class="col-md-4 control-label">Remark</label>
 
             <div class="col-md-6">
-                 <input id="remark" type="number" class="form-control" name="remark"
+                 <input id="remark" type="text" class="form-control" name="remark"
                         placeholder="Enter Notes" required>
             </div>
         </div>
 
         <div class="form-group" v-if="showAmount">
             <div class="col-md-8 col-md-offset-4">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" @click="submit" class="btn btn-primary">
                     Add Transaction
                 </button>
             </div>
@@ -122,6 +122,20 @@
 
            reset: function () {
                this.showAmount = this.showStaff = this.showStudent = false;
+           },
+
+           submit: function(e) {
+               e.preventDefault();
+
+               let data = $('#transaction').serialize();
+
+               console.log(data);
+
+                axios.post('/transaction',{
+                    data
+                }).then((resp)=>{
+                    toastr.info(resp);
+                });
            }
         },
 

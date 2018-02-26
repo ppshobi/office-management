@@ -43172,34 +43172,60 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+            props: ['categories'],
     data: function data() {
-        return {};
+        return {
+            transactionCategories: null,
+            selectedTransactionType: null
+        };
     },
-    mounted: function mounted() {
-        console.log('Transaction Component mounted.');
-        $("#students").hide();
-        $("#categories").hide();
-        $("#staffs").hide();
-    },
-    created: function created() {
-        console.log('ceated');
-    },
+            mounted: function mounted() {
+            },
+            created: function created() {
+            },
 
 
     methods: {
         transactionTypeChanged: function transactionTypeChanged(change) {
-            console.log('came here' + _typeof(change.target.value));
-
             if (change.target.value == 1) {
-                $("#categories").show();
+                this.transactionCategories = this.categories.filter(function (category) {
+                    return category.is_credit == 1;
+                });
+            } else {
+                this.transactionCategories = this.categories.filter(function (category) {
+                    return category.is_credit == 0;
+                });
             }
         }
     }
@@ -43213,7 +43239,105 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+    return _c(
+        "form",
+        {
+            staticClass: "form-horizontal",
+            attrs: {method: "POST", action: "/transaction"}
+        },
+        [
+            _c("div", {staticClass: "form-group"}, [
+                _c(
+                    "label",
+                    {
+                        staticClass: "col-md-4 control-label",
+                        attrs: {for: "transaction_type_debit"}
+                    },
+                    [_vm._v("Select Transaction Type")]
+                ),
+                _vm._v(" "),
+                _c("div", {staticClass: "col-md-4"}, [
+                    _c("div", {staticClass: "col-md-6"}, [
+                        _c(
+                            "label",
+                            {
+                                staticClass: "control-label",
+                                attrs: {for: "transaction_type_debit"}
+                            },
+                            [_vm._v("Debit")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                            attrs: {type: "radio", value: "0", name: "transaction_type"},
+                            on: {change: _vm.transactionTypeChanged}
+                        })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", {staticClass: "col-md-6"}, [
+                        _c(
+                            "label",
+                            {
+                                staticClass: "control-label",
+                                attrs: {for: "transaction_type_credit"}
+                            },
+                            [_vm._v("Credit")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                            attrs: {type: "radio", value: "1", name: "transaction_type"},
+                            on: {change: _vm.transactionTypeChanged}
+                        })
+                    ])
+                ])
+            ]),
+            _vm._v(" "),
+            this.transactionCategories
+                ? _c(
+                "div",
+                {staticClass: "form-group", attrs: {id: "categories"}},
+                [
+                    _c(
+                        "label",
+                        {
+                            staticClass: "col-md-4 control-label",
+                            attrs: {for: "transaction_type_debit"}
+                        },
+                        [_vm._v("Select Transaction Category")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", {staticClass: "col-md-6"}, [
+                        _c(
+                            "select",
+                            {
+                                staticClass: "form-control",
+                                attrs: {
+                                    id: "transaction_type_id",
+                                    name: "transaction_type_id",
+                                    required: "",
+                                    autofocus: ""
+                                }
+                            },
+                            [
+                                _c("option", {attrs: {value: "0"}}, [
+                                    _vm._v("Select Category")
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(this.transactionCategories, function (category) {
+                                    return _c(
+                                        "option",
+                                        {domProps: {value: category.id}},
+                                        [_vm._v(" " + _vm._s(category.name) + " ")]
+                                    )
+                                })
+                            ],
+                            2
+                        )
+                    ])
+                ]
+                )
+                : _vm._e()
+        ]
+    )
 }
 var staticRenderFns = []
 render._withStripped = true

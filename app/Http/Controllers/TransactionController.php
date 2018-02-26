@@ -25,14 +25,12 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $students = Student::all();
-        $staffs = Staff::all();
-        $debits = TransactionType::where('is_credit', 0)->get();
-        $credits = TransactionType::where('is_credit', 1)->get();
-
-        return view('transactions.create', compact(['students', 'staffs', 'debits', 'credits']));
+        $students         = Student::all();
+        $staffs           = Staff::all();
+        $transactionTypes = TransactionType::all()->toArray();
+        return view('transactions.create', compact(['students', 'staffs', 'transactionTypes']));
     }
 
     /**

@@ -74,7 +74,8 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/transaction">View Transactions</a></li>
-                                <li><a href="/transaction/create">Add a Transaction</a></li>
+                                <li><a href="/transaction/create?credit=true">Add a Credit Transaction</a></li>
+                                <li><a href="/transaction/create?debit=true">Add a Debit Transaction</a></li>
                             </ul>
                         </li>
                     </ul>

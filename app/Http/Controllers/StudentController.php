@@ -61,7 +61,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        dd('Show');
+        $transactions = $student->transactions;
+
+        return view('student.show', compact(['student', 'transactions']));
     }
 
     /**

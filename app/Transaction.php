@@ -15,7 +15,7 @@ class Transaction extends Model
 
     public function type()
     {
-        return $this->belongsTo(TransactionType::class);
+        return $this->belongsTo(TransactionType::class, 'transaction_type_id');
     }
 
     public function transactionable()

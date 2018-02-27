@@ -7,6 +7,50 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Student Details</div>
                     <div class="panel-body">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="name" class="col-md-4 control-label">Student Name</label>
+
+                                <div class="col-md-6">
+                                    <p>{{ $student->name }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="guardians-name" class="col-md-4 control-label">Guardians Name</label>
+
+                                <div class="col-md-6">
+                                    <p>{{ $student->guardians_name }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="guardians-name" class="col-md-4 control-label">Address</label>
+
+                                <div class="col-md-6">
+                                    <p>{{ $student->address }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="guardians-name" class="col-md-4 control-label">Phone</label>
+
+                                <div class="col-md-6">
+                                    <p>{{ $student->phone_number }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob" class="col-md-4 control-label">Date Of Birth</label>
+
+                                <div class="col-md-6">
+                                    <p>{{ $student->dob }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="course" class="col-md-4 control-label">Course</label>
+
+                                <div class="col-md-6">
+                                    <p>{{ $student->course->name }}</p>
+                                </div>
+                            </div>
+                        </div>
                         <table class="table table-striped" border="1">
                             <thead>
                             <tr>

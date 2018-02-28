@@ -76,15 +76,25 @@
         </div>
     </div>
     <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style='min-width: 320px;'>
+        @if(!empty($errors->all()))
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h4 class="fw-300 c-grey-900 mB-40">Login</h4>
-        <form>
+        <form method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
             <div class="form-group">
                 <label class="text-normal text-dark">Username</label>
-                <input type="email" class="form-control" placeholder="John Doe">
+                <input type="email" name="email" class="form-control" placeholder="John Doe">
             </div>
             <div class="form-group">
                 <label class="text-normal text-dark">Password</label>
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password">
             </div>
             <div class="form-group">
                 <div class="peers ai-c jc-sb fxw-nw">
@@ -97,7 +107,7 @@
                         </div>
                     </div>
                     <div class="peer">
-                        <button class="btn btn-primary">Login</button>
+                        <button class="btn btn-primary" type="submit">Login</button>
                     </div>
                 </div>
             </div>

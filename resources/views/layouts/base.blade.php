@@ -44,7 +44,9 @@
         }
 
         @-webkit-keyframes sk-scaleout {
-            0% { -webkit-transform: scale(0) }
+            0% {
+                -webkit-transform: scale(0)
+            }
             100% {
                 -webkit-transform: scale(1.0);
                 opacity: 0;
@@ -55,11 +57,12 @@
             0% {
                 -webkit-transform: scale(0);
                 transform: scale(0);
-            } 100% {
-                  -webkit-transform: scale(1.0);
-                  transform: scale(1.0);
-                  opacity: 0;
-              }
+            }
+            100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
         }
     </style>
     <script>
@@ -79,19 +82,13 @@
 <!-- @App Content -->
 <!-- =================================================== -->
 <div id="app">
-    <!-- #Left Sidebar ==================== -->
-<!-- #Main ============================ -->
-
-        <!-- ### $Topbar ### -->
-    <!-- ### $App Screen Content ### -->
-
-                @yield('content')
-
-
-        <!-- ### $App Screen Footer ### -->
-        <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-            <span>Copyright © 2018 Developed by <a href="https://shobi.in" target='_blank' title="Shobi">Shobi</a>. All rights reserved.</span>
-        </footer>
+    @yield('content')
+<!-- ### $App Screen Footer ### -->
+    <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+        <span>
+            Copyright © {{ (new \Carbon\Carbon)->year }} Developed by <a href="https://shobi.in" target='_blank' title="Shobi">Shobi</a>. All rights reserved.
+        </span>
+    </footer>
 </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>

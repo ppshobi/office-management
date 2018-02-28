@@ -65,39 +65,34 @@
     <script>
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
-        setTimeout(() => {
-            loader.classList.add('fadeOut');
-        }, 300);
+            setTimeout(() => {
+                loader.classList.add('fadeOut');
+            }, 300);
         });
     </script>
 </head>
 <body class="app">
 
-    <div id='loader'>
-        <div class="spinner"></div>
-    </div>
-    <!-- @App Content -->
-    <!-- =================================================== -->
-    <div id="app">
-        <!-- #Left Sidebar ==================== -->
-        @include('layouts.partials.menu')
-        <!-- #Main ============================ -->
-        <div class="page-container">
-            <!-- ### $Topbar ### -->
-            @include('layouts.partials.navbar')
-            <!-- ### $App Screen Content ### -->
-            <main class='main-content bgc-grey-100'>
-                <div id='mainContent'>
-                    @yield('content')
-                </div>
-            </main>
+<div id='loader'>
+    <div class="spinner"></div>
+</div>
+<!-- @App Content -->
+<!-- =================================================== -->
+<div id="app">
+    <!-- #Left Sidebar ==================== -->
+<!-- #Main ============================ -->
 
-            <!-- ### $App Screen Footer ### -->
-            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-                <span>Copyright © 2018 Developed by <a href="https://shobi.in" target='_blank' title="Shobi">Shobi</a>. All rights reserved.</span>
-            </footer>
-        </div>
-    </div>
+        <!-- ### $Topbar ### -->
+    <!-- ### $App Screen Content ### -->
+
+                @yield('content')
+
+
+        <!-- ### $App Screen Footer ### -->
+        <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+            <span>Copyright © 2018 Developed by <a href="https://shobi.in" target='_blank' title="Shobi">Shobi</a>. All rights reserved.</span>
+        </footer>
+</div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/index.js') }}"></script>

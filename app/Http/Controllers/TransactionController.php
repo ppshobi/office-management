@@ -17,7 +17,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        Transaction::all()->paginate(20);
+        $transactions = Transaction::orderBy('date','desc')->get();
+        return view('transactions.index', compact('transactions'));
     }
 
     /**

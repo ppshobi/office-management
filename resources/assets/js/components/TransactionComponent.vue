@@ -1,21 +1,29 @@
 <template>
-    <form class="form-horizontal" id="transaction">
+    <form class="form-horizontal col-md-12" id="transaction">
         <div class="form-group">
-            <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Type</label>
-            <div class="col-md-4">
+            <h6 class="col-md-6 c-red-900">Select Transaction Type</h6>
+            <div class="col-md-3 row">
                 <div class="col-md-6">
-                    <label for="transaction_type_debit" class="control-label">Debit</label>
-                    <input type="radio" value="0" v-model="transaction_type" name="transaction_type"  @change="transactionTypeChanged"/>
+                     <label for="transaction_type_debit" class="form-check-label">Credit</label>
+                     <input type="radio"
+                        value="1"
+                        v-model="transaction_type"
+                        name="transaction_type"
+                        @change="transactionTypeChanged"/>
                 </div>
                 <div class="col-md-6">
-                    <label for="transaction_type_credit" class="control-label">Credit</label>
-                    <input type="radio" value="1" v-model="transaction_type" name="transaction_type"  @change="transactionTypeChanged"/>
+                     <label for="transaction_type_debit" class="form-check-label">Debit</label>
+                     <input type="radio"
+                            value="0"
+                            v-model="transaction_type"
+                            name="transaction_type"
+                            @change="transactionTypeChanged"/>
                 </div>
             </div>
         </div>
 
-        <div id="categories" class="form-group" v-if="this.transactionCategories">
-            <label for="transaction_type_debit" class="col-md-4 control-label">Select Transaction Category</label>
+        <div class="form-group" v-if="this.transactionCategories">
+            <h6 class="col-md-6 c-red-900">Select Transaction Category</h6>
             <div class="col-md-6">
                 <select id="transaction_type_id" v-model="selectedCategory" class="form-control" name="transaction_type_id" required autofocus>
                     <option disabled value="">Select Category</option>
@@ -25,7 +33,7 @@
         </div>
 
          <div id="students" class="form-group" v-if="showStudent">
-            <label for="student_id" class="col-md-4 control-label">Student Name</label>
+            <h6 class="col-md-6 c-red-900">Student Name</h6>
             <div class="col-md-6">
                 <select id="student_id" v-model="student_id" class="form-control" name="student_id" required autofocus>
                     <option value="0"> Select Student</option>
@@ -37,7 +45,7 @@
         </div>
 
         <div id="staffs" class="form-group" v-if="showStaff">
-            <label for="staff_id" class="col-md-4 control-label">Staff Name</label>
+            <h6 class="col-md-6 c-red-900">Staff Name</h6>
             <div class="col-md-6">
                 <select id="staff_id" v-model="staff_id" class="form-control" name="staff_id" required autofocus>
                     <option value="0"> Select Staff</option>
@@ -49,8 +57,7 @@
         </div>
 
         <div class="form-group" v-if="showAmount">
-            <label for="amount" class="col-md-4 control-label">Amount</label>
-
+            <h6 class="col-md-6 c-red-900">Amount</h6>
             <div class="col-md-6">
                 <input id="amount" v-model="amount" type="number" class="form-control" name="amount"
                        placeholder="Enter The Amount" required>
@@ -58,7 +65,7 @@
         </div>
 
         <div class="form-group" v-if="showAmount">
-            <label for="date" class="col-md-4 control-label">Bill Date</label>
+            <h6 class="col-md-6 c-red-900">Bill Date</h6>
 
             <div class="col-md-6" id="datetimepicker1">
                 <div class="input-group date">
@@ -71,8 +78,7 @@
         </div>
 
         <div class="form-group" v-if="showAmount">
-            <label for="remark" class="col-md-4 control-label">Remark</label>
-
+            <h6 class="col-md-6 c-red-900">Remark</h6>
             <div class="col-md-6">
                  <input id="remark" type="text" class="form-control" v-model="remark" name="remark"
                         placeholder="Enter Notes" required>

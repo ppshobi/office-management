@@ -1,18 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Add a Transaction</div>
-                    <div class="panel-body">
-                        <transaction :categories="{{json_encode($transactionTypes)}}"
-                                     :students="{{ json_encode($students) }}"
-                                     :staffs="{{ json_encode($staffs) }}">
-
-                        </transaction>
-                    </div>
+    <div class="full-container">
+        <div class="container col-md-10">
+            <div class="bgc-white p-20 bd">
+                <h4 class="c-blue-900">Add a Transaction</h4>
+                <div class="mT-30">
+                    <transaction :categories="{{json_encode($transactionTypes)}}"
+                                 :students="{{ json_encode($students) }}"
+                                 :staffs="{{ json_encode($staffs) }}">
+                    </transaction>
                 </div>
             </div>
         </div>

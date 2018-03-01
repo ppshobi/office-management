@@ -148,7 +148,8 @@
                    'student_id': this.student_id,
 
                }).then((resp)=>{
-                    toastr.info(resp.data.message);
+                    toastr.success(resp.data.message);
+                    this.reset();
                });
            }
         },

@@ -40,7 +40,7 @@
                                 <td width="20%">{{ $transaction->date->format('d-M-Y') }}</td>
                                 <td>{{ $transaction->transactionable ? $transaction->transactionable->name :'' }}</td>
                                 <td>
-                                    <action></action>
+                                    <action :id="{{$transaction->id}}" :url="'transaction'"></action>
                                 </td>
                             </tr>
                         @empty

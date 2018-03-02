@@ -38,6 +38,10 @@ Route::delete('/staff/{staff}', 'StaffController@destroy');
 Route::get('/transaction', 'TransactionController@index');
 Route::get('/transaction/create', 'TransactionController@create');
 Route::post('/transaction', 'TransactionController@store');
+Route::patch('/transaction/{transaction}', 'TransactionController@update');
 Route::delete('/transaction/{transaction}', 'TransactionController@destroy');
 Route::get('/transaction/{transaction}/edit', 'TransactionController@edit');
+
+
+Route::resource('test', 'Controller');
 

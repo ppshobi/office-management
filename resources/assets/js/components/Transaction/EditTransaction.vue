@@ -67,13 +67,8 @@
         <div class="form-group" v-if="showAmount">
             <h6 class="col-md-6 c-red-900">Bill Date</h6>
 
-            <div class="col-md-6" id="datetimepicker1">
-                <div class="input-group date">
-                    <input type="date" name="date" v-model="date" class="form-control" value="01/01/2018">
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
-                    </div>
-                </div>
+            <div class="col-md-6">
+                <input name="date" v-model="date" class="form-control bill-date">
             </div>
         </div>
 
@@ -88,7 +83,7 @@
         <div class="form-group" v-if="showAmount">
             <div class="col-md-8 col-md-offset-4">
                 <button type="submit" @click="submit" class="btn btn-primary">
-                    Add Transaction
+                    Update
                 </button>
             </div>
         </div>
@@ -138,7 +133,7 @@
            submit: function(e) {
                e.preventDefault();
 
-               axios.post('/transaction',{
+               axios.patch('/transaction/'+this.transaction.id, {
                    'transaction_type_id': this.selectedCategory,
                    'date' : this.date,
                    'amount': this.amount,

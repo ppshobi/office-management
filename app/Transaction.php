@@ -33,4 +33,9 @@ class Transaction extends Model
     {
         return Carbon::parse($value)->format('d/m/Y');
     }
+
+    public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value);
+    }
 }

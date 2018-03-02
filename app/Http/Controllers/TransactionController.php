@@ -95,13 +95,34 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Billing  $billing
+     * @param  \Illuminate\Http\Request $request
+     * @param Transaction $transaction
      * @return \Illuminate\Http\Response
+     * @internal param \App\Billing $billing
      */
-    public function update(Request $request, Billing $billing)
+    public function update(Request $request, Transaction $transaction)
     {
-        //
+        $transactionable = null;
+
+        if ($request->student_id)
+        {
+            $transactionable = Student::find($request->student_id);
+        }
+        elseif ($request->staff_id)
+        {
+            $transactionable = Staff::find($request->student_id);
+        }
+
+        $transaction->update([
+            'amount'                  => $request->amount,
+            'remark'                  => $request->remark,
+            'date'                    => $request->date,
+            'transaction_type_id'     => $request->transaction_type_id,
+            'transactionable_type'    => $transactionable ? get_class($transactionable) : null,
+            'transactionable_type_id' => $transactionable ? $transactionable->id : null,
+        ]);
+
+        return response()->json(['message' => 'Transaction Updated'], 200);
     }
 
     /**

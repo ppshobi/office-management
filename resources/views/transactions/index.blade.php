@@ -37,13 +37,12 @@
                                 <td>{{ $transaction->type->name }}</td>
                                 <td>{{ $transaction->amount }}</td>
                                 <td>{{ $transaction->remark }}</td>
-                                <td>{{ $transaction->date->format('d-M-Y') }}</td>
+                                <td width="20%">{{ $transaction->date->format('d-M-Y') }}</td>
                                 <td>{{ $transaction->transactionable ? $transaction->transactionable->name :'' }}</td>
                                 <td>
-                                    <div class="col-md-12 row">
-                                        <button class="btn btn-danger btn-sm">Delete</button>
-                                        <button class="btn btn-primary btn-sm">Update</button>
-                                    </div>
+                                    <actions :url="/transaction" :id="{{$transaction->id}}">
+
+                                    </actions>
                                 </td>
                             </tr>
                         @empty

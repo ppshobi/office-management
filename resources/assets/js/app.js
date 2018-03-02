@@ -19,6 +19,7 @@ window.toastr = require('toastr');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('transaction', require('./components/TransactionComponent.vue'));
+Vue.component('action', require('./components/ActionComponent.vue'));
 
 const app = new Vue({
     el: '#app'

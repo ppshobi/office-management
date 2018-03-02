@@ -24,21 +24,23 @@
         </tr>
     </tfoot>
     <tbody>
-        <tr v-for="transaction in this.items">
+        <tr v-for="(transaction,index) in this.items" :id="transaction.id">
             <td>{{ transaction.id }}</td>
             <td>{{ transaction.type.name }}</td>
             <td>{{ transaction.amount }}</td>
             <td>{{ transaction.remark }}</td>
             <td width="20%">{{ transaction.date }}</td>
-            <td></td>
-            <td> Hello</td>
+            <td>{{ transaction.transactionable ? transaction.transactionable.name : ''}}</td>
+            <td>
+                <action :id="transaction.id" :index="index" :url="'transaction'" @removed="remove(index)"></action>
+            </td>
         </tr>
     </tbody>
 </table>
 </div>
 </template>
 <script>
-//    import action from './ActionComponent';
+    import action from './ActionComponent';
 
     export default {
 
@@ -50,11 +52,10 @@
         },
 
         methods:{
-            removeSelf:function() {
-                toastr.info('Trying to remove');
+            remove:function(index) {
+                $("#"+this.items[index].id).remove();
             }
         },
-
         watch:{
 
         }

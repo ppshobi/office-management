@@ -3,6 +3,6 @@ import 'datatables';
 
 export default (function () {
   $('#dataTable').DataTable({
-    "ordering": false
+      order:[[0,'desc']]
   });
 }());

@@ -8,7 +8,7 @@
 <script>
     import swal from 'sweetalert';
     export default {
-        props: ['id', 'url'],
+        props: ['id', 'url', 'index'],
         data() {
             return {
 
@@ -34,10 +34,11 @@
                })
                .then((willDelete) => {
                  if (willDelete) {
+                    let self=this;
                     axios.delete(this.url+'/'+this.id)
                     .then(function(response) {
                         toastr.info(response.data.message)
-                        this.$emit('removed');
+                        self.$emit('removed');
                     }).catch(function (error) {
                         toastr.warning(error);
                     });

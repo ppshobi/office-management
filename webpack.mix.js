@@ -12,10 +12,11 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .js('resources/assets/adminator/scripts/index.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
+    .js('resources/assets/adminator/scripts/index.js', 'public/js')
     .sass('resources/assets/adminator/styles/index.scss', 'public/css')
     .styles(['resources/assets/sass/vendor/toastr.min.css'], 'public/css/vendor.css');
-    // .copyDirectory('resources/assets/adminator/static/images', 'public/images')
-    // .copyDirectory('resources/assets/adminator/static/fonts', 'public/fonts');
+
+mix.copyDirectory('resources/assets/adminator/static/images', 'public/images')
+    .copyDirectory('resources/assets/adminator/static/fonts', 'public/fonts');
 

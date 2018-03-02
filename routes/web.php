@@ -39,4 +39,5 @@ Route::get('/transaction', 'TransactionController@index');
 Route::get('/transaction/create', 'TransactionController@create');
 Route::post('/transaction', 'TransactionController@store');
 Route::delete('/transaction/{transaction}', 'TransactionController@destroy');
+Route::get('/transaction/{transaction}/edit', 'TransactionController@edit');
 

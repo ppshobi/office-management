@@ -23,7 +23,7 @@
             <th>Actions</th>
         </tr>
     </tfoot>
-    <tbody>
+    <tbody>5
         <tr v-for="(transaction,index) in this.items" :id="transaction.id">
             <td>{{ transaction.id }}</td>
             <td>{{ transaction.type.name }}</td>

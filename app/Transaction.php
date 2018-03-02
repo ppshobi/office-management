@@ -2,11 +2,15 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-
 class Transaction extends Model
 {
-    protected $fillable = ['amount', 'student_id', 'transaction_type_id', 'date', 'remark', 'transactionable_id', 'transactionable_type'];
+    protected $fillable = ['amount', 'student_id',
+                           'transaction_type_id',
+                           'date', 'remark',
+                           'transactionable_id',
+                           'transactionable_type',];
 
     protected $dates = ['created_at', 'updated_at', 'date'];
 
@@ -23,5 +27,10 @@ class Transaction extends Model
     public function transactionable()
     {
         return $this->morphTo();
+    }
+
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
     }
 }

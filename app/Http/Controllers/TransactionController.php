@@ -81,9 +81,15 @@ class TransactionController extends Controller
      * @param  \App\Billing  $billing
      * @return \Illuminate\Http\Response
      */
-    public function edit(Billing $billing)
+    public function edit(Transaction $transaction)
     {
-        //
+        $transaction->load(['type', 'transactionable']);
+
+        $students         = Student::all();
+        $staffs           = Staff::all();
+        $transactionTypes = TransactionType::all();
+
+        return view('transactions.edit', compact(['transaction', 'students', 'staffs', 'transactionTypes']));
     }
 
     /**

@@ -43,22 +43,13 @@
     import action from './ActionComponent';
 
     export default {
-
         props:['items'],
-        data() {
-            return {
-
-            }
-        },
 
         methods:{
             remove:function(index) {
                 $("#"+this.items[index].id).remove();
             }
         },
-        watch:{
-
-        }
     }
 
 </script>

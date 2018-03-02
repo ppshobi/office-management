@@ -38,3 +38,5 @@ Route::delete('/staff/{staff}', 'StaffController@destroy');
 Route::get('/transaction', 'TransactionController@index');
 Route::get('/transaction/create', 'TransactionController@create');
 Route::post('/transaction', 'TransactionController@store');
+Route::delete('/transaction/{transaction}', 'TransactionController@destroy');
+

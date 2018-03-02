@@ -17,7 +17,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::orderBy('date','desc')->get();
+        $transactions = Transaction::orderBy('date','desc')->with(['transactionable','type'])->get();
         return view('transactions.index', compact('transactions'));
     }
 
@@ -101,11 +101,15 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Billing  $billing
+     * @param Transaction $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Billing $billing)
+    public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+
+        return response()->json([
+            'message' => 'Transaction Deleted',
+        ], 200);
     }
 }

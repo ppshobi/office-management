@@ -59,7 +59,6 @@
     "fullcalendar": "^3.6.2",
     "jquery": "^3.2.1",
     "jquery-sparkline": "^2.4.0",
-    "load-google-maps-api": "^1.0.0",
     "lodash": "^4.17.4",
     "masonry-layout": "^4.2.0",
     "moment": "^2.19.1",

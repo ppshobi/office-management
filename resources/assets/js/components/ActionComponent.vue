@@ -36,7 +36,8 @@
                  if (willDelete) {
                     axios.delete(this.url+'/'+this.id)
                     .then(function(response) {
-                        toastr.info(response.data.message);
+                        toastr.info(response.data.message)
+                        this.$emit('removed');
                     }).catch(function (error) {
                         toastr.warning(error);
                     });

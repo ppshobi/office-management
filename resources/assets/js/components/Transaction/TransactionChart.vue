@@ -11,16 +11,28 @@
     export default {
         data() {
             return {
-                income: [60, 50, 70, 60, 29, 51, 64,89,100,150,0,-10],
-                expense:  [100, 60, 50, 70, 60,80,100,15,0,200,10,5]
+                income: null,
+                expense:  null
             }
         },
 
         mounted() {
+            this.fetch();
             this.initialize();
         },
 
         methods: {
+            fetch: function() {
+                axios.get('api/transaction/history/year')
+                    .then((response) => {
+                        this.income = response.data.credits;
+                        this.expense = response.data.debits;
+                    })
+                    .catch((error) => {
+                        toastr.error(error);
+                    });
+            },
+
             initialize: function () {
                  const lineChartBox = document.getElementById('line-chart2');
                   if (lineChartBox) {

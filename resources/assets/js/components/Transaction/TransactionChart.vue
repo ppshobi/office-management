@@ -18,19 +18,19 @@
 
         mounted() {
             this.fetch();
-            this.initialize();
         },
 
         methods: {
             fetch: function() {
                 axios.get('api/transaction/history/year')
-                    .then((response) => {
-                        this.income = response.data.credits;
-                        this.expense = response.data.debits;
-                    })
-                    .catch((error) => {
-                        toastr.error(error);
-                    });
+                .then((response) => {
+                    this.income = _.valuesIn(response.data.credits);
+                    this.expense = _.valuesIn(response.data.debits);
+                    this.initialize();
+                })
+                .catch((error) => {
+                    toastr.error(error);
+                });
             },
 
             initialize: function () {

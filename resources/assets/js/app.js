@@ -22,6 +22,7 @@ Vue.component('create-transaction', require('./components/Transaction/CreateTran
 Vue.component('edit-transaction', require('./components/Transaction/EditTransaction.vue'));
 Vue.component('action', require('./components/ActionComponent.vue'));
 Vue.component('transction-record', require('./components/TransactionRecordComponent.vue'));
+Vue.component('transaction-chart', require('./components/Transaction/TransactionChart.vue'));
 
 const app = new Vue({
     el: '#app'

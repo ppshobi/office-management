@@ -102,7 +102,7 @@
                     <div class="peer peer-greed w-70p@lg+ w-100@lg- p-20">
                         <div class="layers">
                             <div class="layer w-100 mB-10">
-                                <h6 class="lh-1">Site Visits</h6>
+                                <h6 class="lh-1">Statistics</h6>
                             </div>
                             <div class="layer w-100">
                                 <div class="bd bgc-white">
@@ -111,7 +111,8 @@
                                             <h6 class="lh-1">Monthly Stats</h6>
                                         </div>
                                         <div class="layer w-100 p-20">
-                                            <canvas id="line-chart" height="220"></canvas>
+                                            <transaction-chart>
+                                            </transaction-chart>
                                         </div>
                                         <div class="layer bdT p-20 w-100">
                                             <div class="peers ai-c jc-c gapX-20">

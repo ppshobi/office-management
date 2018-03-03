@@ -17,30 +17,33 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/course/create', 'CourseController@create');
-Route::post('/course', 'CourseController@store');
-Route::get('/course', 'CourseController@index');
+    Route::get('/course/create', 'CourseController@create');
+    Route::post('/course', 'CourseController@store');
+    Route::get('/course', 'CourseController@index');
 
-Route::get('/student', 'StudentController@index');
-Route::get('/student/create', 'StudentController@create');
-Route::post('/student', 'StudentController@store');
-Route::patch('/student/{id}', 'StudentController@update');
-Route::get('/student/{student}', 'StudentController@show');
-Route::delete('/student/{student}', 'StudentController@destroy');
+    Route::get('/student', 'StudentController@index');
+    Route::get('/student/create', 'StudentController@create');
+    Route::post('/student', 'StudentController@store');
+    Route::patch('/student/{id}', 'StudentController@update');
+    Route::get('/student/{student}', 'StudentController@show');
+    Route::delete('/student/{student}', 'StudentController@destroy');
 
-Route::get('/staff', 'StaffController@index');
-Route::get('/staff/create', 'StaffController@create');
-Route::post('/staff', 'StaffController@store');
-Route::delete('/staff/{staff}', 'StaffController@destroy');
+    Route::get('/staff', 'StaffController@index');
+    Route::get('/staff/create', 'StaffController@create');
+    Route::post('/staff', 'StaffController@store');
+    Route::delete('/staff/{staff}', 'StaffController@destroy');
 
-Route::get('/transaction', 'TransactionController@index');
-Route::get('/transaction/create', 'TransactionController@create');
-Route::post('/transaction', 'TransactionController@store');
-Route::patch('/transaction/{transaction}', 'TransactionController@update');
-Route::delete('/transaction/{transaction}', 'TransactionController@destroy');
-Route::get('/transaction/{transaction}/edit', 'TransactionController@edit');
+    Route::get('/transaction', 'TransactionController@index');
+    Route::get('/transaction/create', 'TransactionController@create');
+    Route::post('/transaction', 'TransactionController@store');
+    Route::patch('/transaction/{transaction}', 'TransactionController@update');
+    Route::delete('/transaction/{transaction}', 'TransactionController@destroy');
+    Route::get('/transaction/{transaction}/edit', 'TransactionController@edit');
+});
+
 
 
 Route::resource('test', 'Controller');

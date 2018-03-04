@@ -21,10 +21,6 @@
             }
         },
 
-        created() {
-
-        },
-
         methods:{
             remove: function() {
                swal({

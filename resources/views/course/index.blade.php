@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                             @forelse($courses as $course)
-                                <tr id="">
+                                <tr id="course-{{$course->id}}">
                                     <td class="fw-600">{{ $course->id }}</td>
                                     <td>{{ $course->name }}</td>
                                     <td>{{ $course->duration }} Months</td>
@@ -41,7 +41,7 @@
                                                 :index="{{$course->id}}"
                                                 :url="'course'"
                                                 :message="'If you delete a course, The associated students and their data will be deleted, You can\'t undo this Operation'"
-                                                @removed="remove(index)"></action>
+                                                @removed="remove({{$course->id}})"></action>
                                     </td>
                                 </tr>
                             @empty

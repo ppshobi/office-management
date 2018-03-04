@@ -104,6 +104,37 @@
                     <li class="nav-item dropdown">
                         <a href="/transaction/create"><span>Add a Transaction</span></a>
                     </li>
+
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder"><i class="c-teal-500 ti-pie-chart"></i></span>
+                    <span class="title">Reports</span>
+                    <span class="arrow"><i class="ti-angle-right"></i></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown">
+                        <a href="/report/transaction"><span>Transactions</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/report/student"><span>Students</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder"><i class="c-pink-500 fa fa-gear"></i></span>
+                    <span class="title">Administrative Tools</span>
+                    <span class="arrow"><i class="ti-angle-right"></i></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown">
+                        <a href="/users"><span>Users</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/transaction/create"><span>Backup Database</span></a>
+                    </li>
                 </ul>
             </li>
         </ul>

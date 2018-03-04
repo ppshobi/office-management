@@ -28,14 +28,4 @@ class Transaction extends Model
     {
         return $this->morphTo();
     }
-
-    public function getDateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
-
-    public function setDateAttribute($value)
-    {
-        $this->attributes['date'] = Carbon::parse($value);
-    }
 }

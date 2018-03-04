@@ -15,7 +15,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="table-responsive p-20">
+                    <course-index inline-template>
+                        <div class="table-responsive p-20">
                         <table class="table">
                             <thead>
                             <tr>
@@ -32,8 +33,12 @@
                                     <td class="fw-600">{{ $course->id }}</td>
                                     <td>{{ $course->name }}</td>
                                     <td>{{ $course->duration }} Months</td>
-                                    <td><span class="text-success">&#8377; {{ $course->price }}</span></td>
-                                    <td> <action :id="1" :index="{{$course->id}}" :url="'course'" @removed="remove(index)"></action></td>
+                                    <td>
+                                        <span class="text-success">&#8377; {{ $course->price }}</span>
+                                    </td>
+                                    <td>
+                                        <action :id="{{ $course->id }}" :index="{{$course->id}}" :url="'course'" @removed="remove(index)"></action>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -44,6 +49,7 @@
                             </tbody>
                         </table>
                     </div>
+                    </course-index>
                 </div>
             </div>
         </div>

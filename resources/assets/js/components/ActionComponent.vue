@@ -47,7 +47,7 @@
             },
 
             update: function() {
-                swal('test')
+                window.location.href = `${this.url}/${this.id}/edit`;
             }
         },
 

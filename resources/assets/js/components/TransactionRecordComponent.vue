@@ -23,11 +23,11 @@
             <th>Actions</th>
         </tr>
     </tfoot>
-    <tbody>5
+    <tbody>
         <tr v-for="(transaction,index) in this.items" :id="transaction.id">
             <td>{{ transaction.id }}</td>
             <td>{{ transaction.type.name }}</td>
-            <td>{{ transaction.amount }}</td>
+            <td>&#8377; {{ transaction.amount }}</td>
             <td>{{ transaction.remark }}</td>
             <td width="20%">{{ transaction.date }}</td>
             <td>{{ transaction.transactionable ? transaction.transactionable.name : ''}}</td>

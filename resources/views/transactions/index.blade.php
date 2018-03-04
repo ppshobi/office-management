@@ -2,13 +2,20 @@
 
 @section('content')
     <div class="container-fluid">
-        <h4 class="c-grey-900 mT-10 mB-30">Transaction History</h4>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                    <h4 class="c-grey-900 mB-20">All Transactions</h4>
-                    <transction-record :items="{{ json_encode($transactions->toArray()) }}">
-                    </transction-record>
+        <div class="bd bgc-white">
+            <div class="layers">
+                <div class="layer w-100">
+                    <div class="bgc-light-blue-500 c-white p-20">
+                        <div class="peers ai-c jc-sb gap-40">
+                            <div class="peer peer-greed">
+                                <h3>Transaction History</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive p-20">
+                        <transction-record :items="{{ json_encode($transactions->toArray()) }}">
+                        </transction-record>
+                    </div>
                 </div>
             </div>
         </div>

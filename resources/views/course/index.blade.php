@@ -37,7 +37,11 @@
                                         <span class="text-success">&#8377; {{ $course->price }}</span>
                                     </td>
                                     <td>
-                                        <action :id="{{ $course->id }}" :index="{{$course->id}}" :url="'course'" @removed="remove(index)"></action>
+                                        <action :id="{{ $course->id }}"
+                                                :index="{{$course->id}}"
+                                                :url="'course'"
+                                                :message="'If you delete a course, The associated students and their data will be deleted, You can\'t undo this Operation'"
+                                                @removed="remove(index)"></action>
                                     </td>
                                 </tr>
                             @empty

@@ -8,15 +8,17 @@
 <script>
     import swal from 'sweetalert';
     export default {
-        props: ['id', 'url', 'index'],
+        props: ['id', 'url', 'index', 'message'],
         data() {
             return {
-
+                msg: "Once deleted, you will not be able to Undo"
             }
         },
 
         mounted() {
-
+            if(this.message != null){
+                this.msg = this.message;
+            }
         },
 
         created() {
@@ -27,7 +29,7 @@
             remove: function() {
                swal({
                  title: "Are you sure?",
-                 text: "Once deleted, you will not be able to Undo",
+                 text: this.msg,
                  icon: "warning",
                  buttons: true,
                  dangerMode: true,

@@ -37,13 +37,19 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' =>'required|string',
+            'duration' => 'required:integer',
+            'price' => 'required|integer'
+        ]);
+
         Course::create([
             'name' => $request->name,
             'duration' => $request->duration,
             'price' => $request->fees,
         ]);
 
-        return redirect('/course')->with(['flash'=>'Course Added']);
+        return response()->json(['message' => 'Course Created'], 200);
     }
 
     /**

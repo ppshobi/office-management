@@ -21,6 +21,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('action', require('./components/ActionComponent.vue'));
 
 Vue.component('course-index', require('./components/Course/CourseIndex.vue'));
+Vue.component('create-course', require('./components/Course/CreateCourse.vue'));
 
 Vue.component('create-transaction', require('./components/Transaction/CreateTransaction.vue'));
 Vue.component('edit-transaction', require('./components/Transaction/EditTransaction.vue'));

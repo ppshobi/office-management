@@ -27,7 +27,7 @@ class TransactionController extends Controller
 
         foreach ($transactions as $transaction)
         {
-            $month = Carbon::createFromFormat('d/m/Y', $transaction->date)->month;
+            $month = $transaction->date->month;
 
             if($transaction->type->is_credit)
             {

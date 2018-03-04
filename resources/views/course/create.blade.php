@@ -2,12 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Add a course</div>
-
-                    <div class="panel-body">
+        <div class="bd bgc-white">
+            <div class="layers">
+                <div class="layer w-100">
+                    <div class="bgc-light-blue-500 c-white p-20">
+                        <div class="peers ai-c jc-sb gap-40">
+                            <div class="peer peer-greed">
+                                <h3>Add A Course</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive p-20">
                         <form class="form-horizontal" method="POST" action="/course">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('course-name') ? ' has-error' : '' }}">

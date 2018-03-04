@@ -108,7 +108,7 @@
                                 <div class="bd bgc-white">
                                     <div class="layers">
                                         <div class="layer w-100 pX-20 pT-20">
-                                            <h6 class="lh-1">Monthly Stats</h6>
+                                            <h6 class="lh-1">Yearly Statistics</h6>
                                         </div>
                                         <div class="layer w-100 p-20">
                                             <transaction-chart>

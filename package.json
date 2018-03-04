@@ -48,7 +48,6 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
-    "toastr": "^2.1.4",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.0.0",
     "bootstrap-datepicker": "^1.7.1",
@@ -61,9 +60,10 @@
     "jquery-sparkline": "^2.4.0",
     "lodash": "^4.17.4",
     "masonry-layout": "^4.2.0",
-    "moment": "^2.19.1",
+    "moment": "^2.21.0",
     "perfect-scrollbar": "^1.1.0",
     "popper.js": "^1.12.6",
-    "skycons": "^1.0.0"
+    "skycons": "^1.0.0",
+    "toastr": "^2.1.4"
   }
 }

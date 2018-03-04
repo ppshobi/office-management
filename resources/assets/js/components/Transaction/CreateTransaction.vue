@@ -67,14 +67,9 @@
         <div class="form-group" v-if="showAmount">
             <h6 class="col-md-6 c-red-900">Bill Date</h6>
 
-            <div class="col-md-6" id="datetimepicker1">
-                <div class="input-group date">
-                    <input type="date" name="date" v-model="date" class="form-control" value="01/01/2018">
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
-                    </div>
-                </div>
-            </div>
+             <div class="col-md-6">
+                <input name="date" v-model="date" class="form-control bill-date">
+             </div>
         </div>
 
         <div class="form-group" v-if="showAmount">
@@ -96,6 +91,8 @@
 </template>
 
 <script>
+    import moment from 'moment';
+
     export default {
         props: ['categories', 'students', 'staffs'],
         data() {
@@ -103,7 +100,7 @@
                 transactionCategories:null,
                 selectedTransactionType:null,
                 selectedCategory:null,
-                date:new Date('yyyy-mm-dd'),
+                date: moment().format('DD/MM/YYYY'),
                 remark:'',
                 amount:0,
                 transaction_type:null,
@@ -117,7 +114,7 @@
         },
 
         mounted() {
-
+            this.showAmount=true;
         },
 
         created() {
@@ -139,7 +136,7 @@
 
                axios.post('/transaction',{
                    'transaction_type_id': this.selectedCategory,
-                   'date' : this.date,
+                   'date' : moment.format(this.date, "yyyy-mm-dd"),
                    'amount': this.amount,
                    'remark': this.remark,
                    'staff_id': this.staff_id,

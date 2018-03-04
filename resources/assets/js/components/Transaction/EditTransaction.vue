@@ -112,12 +112,7 @@
         },
 
         mounted() {
-            console.log('mounted');
             this.initializeValues();
-        },
-
-        created() {
-
         },
 
         methods:{
@@ -152,6 +147,7 @@
                this.amount = this.transaction.amount;
                this.transaction_type = this.transaction.type.is_credit;
                this.selectedCategory = this.transaction.type.id;
+               this.selectedTransactionType = this.transaction.type.is_credit;
                this.date = this.transaction.date;
 
                if(this.transaction.type.id == 8){

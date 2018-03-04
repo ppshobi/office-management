@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="form-group" v-if="showAmount">
+        <div class="form-group">
             <h6 class="col-md-6 c-red-900">Bill Date</h6>
 
              <div class="col-md-6">
@@ -113,14 +113,6 @@
             }
         },
 
-        mounted() {
-            this.showAmount=true;
-        },
-
-        created() {
-
-        },
-
         methods:{
            transactionTypeChanged: function (change) {
                this.selectedTransactionType = change.target.value;
@@ -136,7 +128,7 @@
 
                axios.post('/transaction',{
                    'transaction_type_id': this.selectedCategory,
-                   'date' : moment.format(this.date, "yyyy-mm-dd"),
+                   'date' : moment(this.date, "DD/MM/YYYY").format("YYYY-MM-DD"),
                    'amount': this.amount,
                    'remark': this.remark,
                    'staff_id': this.staff_id,

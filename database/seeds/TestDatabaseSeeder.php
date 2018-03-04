@@ -48,6 +48,11 @@ class TestDatabaseSeeder extends Seeder
 
         factory('App\Transaction', 100)->create();
 
+        create('App\User', [
+            'email' => 'shobi@oryxcloud.com',
+            'password' => bcrypt('starman')
+        ]);
+
         echo "\nDone Seeding Test Database\n";
 
     }

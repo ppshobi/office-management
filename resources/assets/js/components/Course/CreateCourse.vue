@@ -57,7 +57,10 @@
         methods:{
 
            reset: function () {
-               this.showAmount = this.showStaff = this.showStudent = false;
+               this.name = '';
+               this.price = '';
+               this.duration = '';
+               this.errors = null;
            },
 
            submit: function(e) {

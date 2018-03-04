@@ -39,14 +39,14 @@ class CourseController extends Controller
     {
         $request->validate([
             'name' =>'required|string',
-            'duration' => 'required:integer',
+            'duration' => 'required|integer|max:999',
             'price' => 'required|integer'
         ]);
 
         Course::create([
             'name' => $request->name,
             'duration' => $request->duration,
-            'price' => $request->fees,
+            'price' => $request->price,
         ]);
 
         return response()->json(['message' => 'Course Created'], 200);

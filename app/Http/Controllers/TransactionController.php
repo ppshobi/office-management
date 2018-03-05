@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Staff;
 use App\Student;
+use Carbon\Carbon;
 use App\Transaction;
 use App\TransactionType;
 use Illuminate\Http\Request;
@@ -83,12 +84,11 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        $transaction->load(['type', 'transactionable']);
+        $transaction->load(['type', 'transactable']);
 
         $students         = Student::all();
         $staffs           = Staff::all();
         $transactionTypes = TransactionType::all();
-
         return view('transactions.edit', compact(['transaction', 'students', 'staffs', 'transactionTypes']));
     }
 
@@ -113,14 +113,14 @@ class TransactionController extends Controller
             $transactionable = Staff::find($request->staff_id);
         }
 
-        $transaction->update([
-            'amount'                  => $request->amount,
-            'remark'                  => $request->remark,
-            'date'                    => $request->date,
-            'transaction_type_id'     => $request->transaction_type_id,
-            'transactab_typele'    => $transactionable ? get_class($transactionable) : null,
-            'transactable_type_id' => $transactionable ? $transactionable->id : null,
-        ]);
+        $transaction->amount               = $request->amount;
+        $transaction->remark               = $request->remark;
+        $transaction->bill_date            = Carbon::createFromFormat("d/m/Y", $request->date);
+        $transaction->transaction_type_id  = $request->transaction_type_id;
+        $transaction->transactable_type    = $transactionable ? get_class($transactionable) : null;
+        $transaction->transactable_id = $transactionable ? $transactionable->id : null;
+
+        $transaction->save();
 
         return response()->json(['message' => 'Transaction Updated'], 200);
     }

@@ -68,7 +68,7 @@
             <h6 class="col-md-6 c-red-900">Bill Date</h6>
 
             <div class="col-md-6">
-                <input name="date" v-model="date" class="form-control bill-date">
+                <input name="date" v-model="date" id="bill-date2" class="form-control bill-date">
             </div>
         </div>
 
@@ -91,6 +91,8 @@
 </template>
 
 <script>
+    import moment from 'moment';
+
     export default {
         props: ['categories', 'students', 'staffs', 'transaction'],
         data() {
@@ -98,7 +100,7 @@
                 transactionCategories:null,
                 selectedTransactionType:null,
                 selectedCategory:null,
-                date:new Date('yyyy-mm-dd'),
+                date:'',
                 remark:'',
                 amount:0,
                 transaction_type:null,
@@ -130,7 +132,7 @@
 
                axios.patch('/transaction/'+this.transaction.id, {
                    'transaction_type_id': this.selectedCategory,
-                   'date' : this.date,
+                   'date' : $("#bill-date2").val(),
                    'amount': this.amount,
                    'remark': this.remark,
                    'staff_id': this.staff_id,
@@ -148,14 +150,14 @@
                this.transaction_type = this.transaction.type.is_credit;
                this.selectedCategory = this.transaction.type.id;
                this.selectedTransactionType = this.transaction.type.is_credit;
-               this.date = this.transaction.date;
+               this.date = moment(this.transaction.bill_date, "YYYY-MM-DD h:m:s").format("DD/MM/YYYY");
 
                if(this.transaction.type.id == 8){
-                    this.staff_id = this.transaction.transactionable.id;
+                    this.staff_id = this.transaction.transactableid;
                }
 
                if(this.transaction.type.id == 4){
-                   this.student_id = this.transaction.transactionable.id;
+                   this.student_id = this.transaction.transactable.id;
                }
 
                this.showAmount = true;

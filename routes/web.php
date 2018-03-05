@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/backup', function(){
         Artisan::call('backup:run', ['--only-db' => true, '--disable-notifications'=> true]);
 
-        session()->flash('Backup Successfull');
+        session()->flash('success', 'Backup Successfull');
 
         return redirect('/dashboard');
     });

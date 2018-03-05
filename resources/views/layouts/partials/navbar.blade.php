@@ -15,6 +15,14 @@
             <li class="search-input">
                 <input class="form-control" type="text" placeholder="Search...">
             </li>
+            <li>
+                @if(session('success'))
+                    <div class="alert alert-success"><i class="fa fa-check"> </i>{{session('success')}}</div>
+                @endif
+                @if(session('danger'))
+                    <div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> {{session('danger')}}</div>
+                @endif
+            </li>
         </ul>
         <ul class="nav-right">
             <li class="dropdown">

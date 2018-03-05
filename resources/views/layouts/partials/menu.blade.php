@@ -133,7 +133,7 @@
                         <a href="/users"><span>Users</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="/transaction/create"><span>Backup Database</span></a>
+                        <a href="/backup"><span>Backup Database</span></a>
                     </li>
                 </ul>
             </li>

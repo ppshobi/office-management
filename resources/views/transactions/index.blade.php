@@ -8,7 +8,7 @@
                     <div class="bgc-light-blue-500 c-white p-20">
                         <div class="peers ai-c jc-sb gap-40">
                             <div class="peer peer-greed">
-                                <h3>Transaction History</h3>
+                                <h3><i class="fa fa-money"></i> Transaction History</h3>
                             </div>
                         </div>
                     </div>

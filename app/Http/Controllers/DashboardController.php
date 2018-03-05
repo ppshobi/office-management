@@ -31,12 +31,12 @@ class DashboardController extends Controller
         $courseCount    = Course::count();
         $debitLastMonth = Transaction::whereHas('type', function ($q) {
                                 $q->where('is_credit', 0);
-                            })->where('date', '>', Carbon::now()->subYear())
+                            })->where('bill_date', '>', Carbon::now()->subMonth())
                             ->sum('amount');
 
         $creditLastMonth = Transaction::whereHas('type', function ($q) {
                                 $q->where('is_credit', 1);
-                            })->where('date', '>', Carbon::now()->subYear())
+                            })->where('bill_date', '>', Carbon::now()->subMonth())
                             ->sum('amount');
 
         return view('dashboard', compact(['studentCount', 'courseCount', 'debitLastMonth', 'creditLastMonth']));

@@ -30,8 +30,8 @@ class TestDatabaseSeeder extends Seeder
         foreach (\App\Student::all() as $student)
         {
             factory('App\Transaction', 10)->create([
-                'transactionable_type' => get_class($student), 
-                'transactionable_id' => $student->id,
+                'transactable_type' => get_class($student),
+                'transactable_id' => $student->id,
                 'transaction_type_id' => 4, 
             ]);
         }
@@ -40,8 +40,8 @@ class TestDatabaseSeeder extends Seeder
         foreach (\App\Staff::all() as $staff)
         {
             factory('App\Transaction', 10)->create([
-                'transactionable_type' => get_class($staff),
-                'transactionable_id' => $staff->id,
+                'transactable_type' => get_class($staff),
+                'transactable_id' => $staff->id,
                 'transaction_type_id' => 8,
             ]);
         }

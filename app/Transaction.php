@@ -8,11 +8,11 @@ class Transaction extends Model
 {
     protected $fillable = ['amount', 'student_id',
                            'transaction_type_id',
-                           'date', 'remark',
-                           'transactionable_id',
-                           'transactionable_type',];
+                           'bill_date', 'remark',
+                           'transactable_id',
+                           'transactable_type',];
 
-    protected $dates = ['created_at', 'updated_at', 'date'];
+    protected $dates = ['created_at', 'updated_at', 'bill_date'];
 
     public function student()
     {
@@ -24,7 +24,7 @@ class Transaction extends Model
         return $this->belongsTo(TransactionType::class, 'transaction_type_id');
     }
 
-    public function transactionable()
+    public function transactable()
     {
         return $this->morphTo();
     }

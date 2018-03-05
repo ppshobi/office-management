@@ -17,7 +17,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::orderBy('date','desc')->with(['transactionable','type'])->get();
+        $transactions = Transaction::orderBy('bill_date','desc')->with(['transactable','type'])->get();
         return view('transactions.index', compact('transactions'));
     }
 
@@ -55,10 +55,10 @@ class TransactionController extends Controller
         Transaction::create([
             'amount'                  => $request->amount,
             'remark'                  => $request->remark,
-            'date'                    => $request->date,
+            'bill_date'               => $request->date,
             'transaction_type_id'     => $request->transaction_type_id,
-            'transactionable_type'    => $transactionable ? get_class($transactionable) : null,
-            'transactionable_type_id' => $transactionable ? $transactionable->id : null,
+            'transactable_type'    => $transactionable ? get_class($transactionable) : null,
+            'transactable_type_id' => $transactionable ? $transactionable->id : null,
         ]);
 
         return response()->json(['message' => 'Transaction Added'], 200);
@@ -110,7 +110,7 @@ class TransactionController extends Controller
         }
         elseif ($request->staff_id)
         {
-            $transactionable = Staff::find($request->student_id);
+            $transactionable = Staff::find($request->staff_id);
         }
 
         $transaction->update([
@@ -118,8 +118,8 @@ class TransactionController extends Controller
             'remark'                  => $request->remark,
             'date'                    => $request->date,
             'transaction_type_id'     => $request->transaction_type_id,
-            'transactionable_type'    => $transactionable ? get_class($transactionable) : null,
-            'transactionable_type_id' => $transactionable ? $transactionable->id : null,
+            'transactab_typele'    => $transactionable ? get_class($transactionable) : null,
+            'transactable_type_id' => $transactionable ? $transactionable->id : null,
         ]);
 
         return response()->json(['message' => 'Transaction Updated'], 200);

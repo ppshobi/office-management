@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div class="form-group" v-if="showAmount">
+        <div class="form-group">
             <h6 class="col-md-6 c-red-900">Amount</h6>
             <div class="col-md-6">
                 <input id="amount" v-model="amount" type="number" class="form-control" name="amount"
@@ -68,11 +68,11 @@
             <h6 class="col-md-6 c-red-900">Bill Date</h6>
 
              <div class="col-md-6">
-                <input name="date" v-model="date" class="form-control bill-date">
+                <input name="date" type="text" id="bill-date2" v-model="date" class="form-control">
              </div>
         </div>
 
-        <div class="form-group" v-if="showAmount">
+        <div class="form-group">
             <h6 class="col-md-6 c-red-900">Remark</h6>
             <div class="col-md-6">
                  <input id="remark" type="text" class="form-control" v-model="remark" name="remark"
@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <div class="form-group" v-if="showAmount">
+        <div class="form-group" v-if="showSubmit">
             <div class="col-md-8 col-md-offset-4">
                 <button type="submit" @click="submit" class="btn btn-primary">
                     Add Transaction
@@ -102,14 +102,14 @@
                 selectedCategory:null,
                 date: moment().format('DD/MM/YYYY'),
                 remark:'',
-                amount:0,
+                amount:null,
                 transaction_type:null,
                 student_id:null,
                 staff_id:null,
 
                 showStudent: false,
                 showStaff:false,
-                showAmount:false,
+                showSubmit: false,
             }
         },
 
@@ -148,6 +148,10 @@
                  } else {
                        this.transactionCategories = this.categories.filter(category => category.is_credit == 0);
                  }
+            },
+
+            amount: function(){
+                this.showSubmit = true;
             },
 
             selectedCategory: function(category) {

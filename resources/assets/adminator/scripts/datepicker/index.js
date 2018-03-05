@@ -4,12 +4,15 @@ import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css';
 
 export default (function () {
     $('.bill-date').datepicker({
+        pickerPosition: 'bottom-left',
         format: 'dd/mm/yyyy',
-        startDate: '-3d',
         todayHighlight: true
     });
 
-
-    $('.end-date').datepicker();
+    $('#bill-date2').datepicker({
+        pickerPosition: 'bottom-left',
+        format: 'dd/mm/yyyy',
+        todayHighlight: true
+    });
 
 }());

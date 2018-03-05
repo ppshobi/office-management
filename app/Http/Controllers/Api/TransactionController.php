@@ -12,7 +12,7 @@ class TransactionController extends Controller
 {
     public function yearHistory()
     {
-        $transactions = Transaction::where('date', '>', Carbon::now()->subYear())
+        $transactions = Transaction::where('bill_date', '>', Carbon::now()->subYear())
                            ->with('type')
                            ->get();
 
@@ -27,7 +27,7 @@ class TransactionController extends Controller
 
         foreach ($transactions as $transaction)
         {
-            $month = $transaction->date->month;
+            $month = $transaction->bill_date->month;
 
             if($transaction->type->is_credit)
             {

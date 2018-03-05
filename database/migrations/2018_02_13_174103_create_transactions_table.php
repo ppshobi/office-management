@@ -17,10 +17,9 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('amount');
             $table->string('remark');
-            $table->unsignedInteger('transactionable_id')->nullable();
-            $table->string('transactionable_type')->nullable();
+            $table->nullableMorphs('transactable');
             $table->integer('transaction_type_id')->unsigned();
-            $table->date('date');
+            $table->date('bill_date');
             $table->timestamps();
 
             $table->foreign('transaction_type_id')->references('id')->on('transaction_types');

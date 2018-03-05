@@ -25,11 +25,11 @@ $factory->define(App\Transaction::class, function (Faker $faker) {
         'amount' => $faker->numberBetween(500, 1000),
         'remark' => $faker->sentence(6),
         'transaction_type_id' => $faker->randomElement($transactionTypes),
-        'transactionable_type' => $transactionable,
-        'transactionable_id' => function()use($transactionable){
+        'transactable_type' => $transactionable,
+        'transactable_id' => function()use($transactionable){
             return factory($transactionable)->create()->id;
         },
-        'date' => $faker->date(),
+        'bill_date' => $faker->date(),
     ];
 });
 

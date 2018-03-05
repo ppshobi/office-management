@@ -29,8 +29,8 @@
             <td>{{ transaction.type.name }}</td>
             <td>&#8377; {{ transaction.amount }}</td>
             <td>{{ transaction.remark }}</td>
-            <td width="20%">{{ transaction.date }}</td>
-            <td>{{ transaction.transactionable ? transaction.transactionable.name : ''}}</td>
+            <td width="10%"> {{ transaction.bill_date | moment }}</td>
+            <td>{{ transaction.transactable ? transaction.transactable.name : ''}}</td>
             <td>
                 <action :id="transaction.id" :index="index" :url="'transaction'" @removed="remove(index)"></action>
             </td>
@@ -40,6 +40,7 @@
 </div>
 </template>
 <script>
+    import moment from 'moment';
     import action from './ActionComponent';
 
     export default {
@@ -50,6 +51,11 @@
                 $("#"+this.items[index].id).remove();
             }
         },
+        filters: {
+          moment: function (date) {
+            return moment(date, "YYYY-MM-DD  h:mm:ss").format('DD-MM-YYYY');
+          }
+        }
     }
 
 </script>

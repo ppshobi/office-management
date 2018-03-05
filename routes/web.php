@@ -43,6 +43,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/transaction/{transaction}', 'TransactionController@update');
     Route::delete('/transaction/{transaction}', 'TransactionController@destroy');
     Route::get('/transaction/{transaction}/edit', 'TransactionController@edit');
+
+    Route::get('/backup', function(){
+        Artisan::call('backup:run', ['--only-db' => true, '--disable-notifications'=> true]);
+
+        session()->flash('Backup Successfull');
+
+        return redirect('/dashboard');
+    });
+
 });
 
 

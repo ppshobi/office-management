@@ -68,7 +68,7 @@
             <h6 class="col-md-6 c-red-900">Bill Date</h6>
 
              <div class="col-md-6">
-                <input name="date" type="text" id="bill-date2" v-model="date" class="form-control">
+                <input name="date" type="text" id="bill-date2" class="form-control">
              </div>
         </div>
 
@@ -87,6 +87,16 @@
                 </button>
             </div>
         </div>
+        <div class="form-group">
+             <div class="col-md-6 col-md-offset-4">
+                 <div class="alert alert-danger" v-if="errors">
+                    <ul>
+                        <li v-for="error in this.errors">{{ error[0] }}</li>
+                    </ul>
+                 </div>
+             </div>
+          </div>
+
     </form>
 </template>
 
@@ -100,12 +110,12 @@
                 transactionCategories:null,
                 selectedTransactionType:null,
                 selectedCategory:null,
-                date: moment().format('DD/MM/YYYY'),
                 remark:'',
                 amount:null,
                 transaction_type:null,
                 student_id:null,
                 staff_id:null,
+                errors: null,
 
                 showStudent: false,
                 showStaff:false,
@@ -121,6 +131,9 @@
 
            reset: function () {
                this.showAmount = this.showStaff = this.showStudent = false;
+               this.amount=null;
+               this.date=null;
+               this.remark=null;
            },
 
            submit: function(e) {
@@ -128,7 +141,7 @@
 
                axios.post('/transaction',{
                    'transaction_type_id': this.selectedCategory,
-                   'date' : moment(this.date, "DD/MM/YYYY").format("YYYY-MM-DD"),
+                   'date' : $("#bill-date2").val(),
                    'amount': this.amount,
                    'remark': this.remark,
                    'staff_id': this.staff_id,
@@ -137,6 +150,9 @@
                }).then((resp)=>{
                     toastr.success(resp.data.message);
                     this.reset();
+               }).catch((err)=>{
+                    toastr.error(err.response.data.message);
+                    this.errors = err.response.data.errors;
                });
            }
         },

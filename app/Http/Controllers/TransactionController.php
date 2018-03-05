@@ -43,6 +43,12 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'amount' => 'required|integer',
+            'date' => 'required',
+            'transaction_type_id' => 'required',
+        ]);
+
         $transactionable = null;
         if ($request->student_id)
         {
@@ -56,10 +62,10 @@ class TransactionController extends Controller
         Transaction::create([
             'amount'                  => $request->amount,
             'remark'                  => $request->remark,
-            'bill_date'               => $request->date,
+            'bill_date'               => Carbon::createFromFormat("d/m/Y", $request->date),
             'transaction_type_id'     => $request->transaction_type_id,
             'transactable_type'    => $transactionable ? get_class($transactionable) : null,
-            'transactable_type_id' => $transactionable ? $transactionable->id : null,
+            'transactable_id' => $transactionable ? $transactionable->id : null,
         ]);
 
         return response()->json(['message' => 'Transaction Added'], 200);

@@ -2,91 +2,67 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Add a Student</div>
+        <div class="bd bgc-white">
+            <div class="layers">
+                <div class="layer w-100">
+                    <div class="bgc-light-blue-500 c-white p-20">
+                        <div class="peers ai-c jc-sb gap-40">
+                            <div class="peer peer-greed">
+                                <h3>Add A Student</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive p-20">
+                        <create-student>
 
-                    <div class="panel-body">
+                        </create-student>
                         <form class="form-horizontal" method="POST" action="/student">
                             {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="name" class="col-md-4 control-label">Student Name</label>
 
                                 <div class="col-md-6">
                                     <input id="name" class="form-control" placeholder="Enter Student Name" name="name"
-                                           value="{{ old('name') }}" required autofocus>
-
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                    @endif
+                                           required autofocus>
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('guardians-name') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="guardians-name" class="col-md-4 control-label">Guardians Name</label>
 
                                 <div class="col-md-6">
                                     <input id="guardians-name" class="form-control" placeholder="Enter Guardians Name" name="guardians_name"
-                                           value="{{ old('guardians_name') }}" required autofocus>
-
-                                    @if ($errors->has('guardians-name'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('guardians-name') }}</strong>
-                                    </span>
-                                    @endif
+                                           required autofocus>
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="address" class="col-md-4 control-label">Address</label>
 
                                 <div class="col-md-6">
                                     <textarea id="address" type="address" class="form-control" name="address"
                                            placeholder="Enter Address">
                                     </textarea>
-
-                                    @if ($errors->has('address'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="phone" class="col-md-4 control-label">Phone No.</label>
 
                                 <div class="col-md-6">
                                     <input id="phone" type="number" class="form-control" name="phone"
                                            placeholder="Enter Phone Number" required>
 
-                                    @if ($errors->has('phone'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="dob" class="col-md-4 control-label">Date Of Birth</label>
-
-                                <div class="col-md-6" id="datetimepicker1">
-                                    <div class="input-group date">
-                                        <input type="date" name="dob" class="form-control" value="01/01/2000">
+                                    <div class="input-group date col-md-6">
+                                        <input name="dob" type="date" class="form-control">
                                         <div class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </div>
                                     </div>
-
-                                    @if ($errors->has('dob'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('dob') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
                             </div>
-                            <div class="form-group{{ $errors->has('course') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="course" class="col-md-4 control-label">Course</label>
 
                                 <div class="col-md-6">
@@ -96,12 +72,6 @@
                                             <option value="{{ $course->id }}">{{ $course->name }}</option>
                                         @endforeach
                                     </select>
-
-                                    @if ($errors->has('course'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('fees') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
 

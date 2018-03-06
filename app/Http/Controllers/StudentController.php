@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class StudentController extends Controller
 {
@@ -49,8 +50,8 @@ class StudentController extends Controller
            'course_id' => $request->course,
         ]);
 
-        session()->flash('status', 'Student Created');
-        return redirect('/student');
+        session()->flash('success', 'Student Created');
+        return redirect('/student/create');
     }
 
     /**

@@ -8,7 +8,7 @@
                     <div class="bgc-light-blue-500 c-white p-20">
                         <div class="peers ai-c jc-sb gap-40">
                             <div class="peer peer-greed">
-                                <h4>Manage Courses</h4>
+                                <h4><i class="fa fa-book"> </i> Manage Courses</h4>
                             </div>
                             <div class="peer">
                                 <h5 class="text-right">{{"Total " . $courses->count() ." Courses" }}</h5>

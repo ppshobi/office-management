@@ -99,7 +99,6 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        session()->flash('status', 'Deleted Student');
-        return redirect('/student');
+        return response()->json(['message' => 'Student Deleted'], 200);
     }
 }

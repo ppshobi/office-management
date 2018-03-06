@@ -13,6 +13,7 @@
                         </div>
                     </div>
                     <div class="table-responsive p-20">
+                        <student-index inline-template>
                         <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -40,7 +41,7 @@
                             </tfoot>
                             <tbody>
                             @foreach($students as $student)
-                                <tr>
+                                <tr id="student-{{$student->id}}">
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->course->name }}</td>
@@ -64,6 +65,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        </student-index>
                     </div>
                 </div>
             </div>

@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/staff', 'StaffController@index');
     Route::get('/staff/create', 'StaffController@create');
     Route::post('/staff', 'StaffController@store');
+    Route::get('/staff/{staff}', 'StaffController@show');
     Route::delete('/staff/{staff}', 'StaffController@destroy');
 
     Route::get('/transaction', 'TransactionController@index');

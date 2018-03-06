@@ -58,7 +58,9 @@ class StaffController extends Controller
      */
     public function show(Staff $staff)
     {
-        //
+        $transactions = $staff->transactions;
+
+        return view('staff.show', compact(['staff', 'transactions']));
     }
 
     /**

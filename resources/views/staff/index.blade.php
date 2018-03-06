@@ -41,6 +41,11 @@
                                                 :url="'staff'"
                                                 :message="'If you delete a staff, The associated transactions and other data will be deleted, You can\'t undo this Operation'"
                                                 @removed="remove({{$staff->id}})"></action>
+                                        <div class="col-md-12 btn-group">
+                                            <a href="/staff/{{$staff->id}}">
+                                                <button class="btn btn-success btn-sm">View</button>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

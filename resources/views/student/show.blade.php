@@ -43,7 +43,14 @@
                                 </tbody>
                             </table>
                         </div>
-                        <table class="table table-striped" border="1">
+                        <div class="bgc-light-blue-500 c-white p-20">
+                            <div class="peers ai-c jc-sb gap-40">
+                                <div class="peer peer-greed">
+                                    <h5><i class="fa fa-money"></i> Fee History</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th>Transaction ID</th>
@@ -51,30 +58,32 @@
                                 <th>Amount</th>
                                 <th>Remark</th>
                                 <th>Date</th>
-                                <th colspan="3">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($transactions as $transaction)
+                            @forelse($transactions as $transaction)
                                 <tr>
                                     <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->type->name }}</td>
-                                    <td>{{ $transaction->amount }}</td>
+                                    <td>&#8377; {{ $transaction->amount }}</td>
                                     <td>{{ $transaction->remark }}</td>
-                                    <td>{{ $transaction->date }}</td>
-                                    <td colspan="3">
-                                        <form action="/transaction/" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-
-                                            <button class="btn btn-danger" type="submit">Delete</button>
-                                        </form>
-
-                                        <button class="btn btn-info">Update</button>
+                                    <td>{{ $transaction->bill_date->format('d-M-Y') }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5">
+                                        <span class="fw-500 c-red-500">No Transactions Yet </span>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforelse
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th colspan="2" class="c-green-500"> &#8377; {{ $transactions->sum('amount'). '/-' }}</td>
+                                </tr>
+                            </tfoot>
 
                         </table>
                     </div>

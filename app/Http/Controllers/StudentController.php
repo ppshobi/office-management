@@ -16,6 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
+        view()->share('title', 'Manage Students');
+
         return view('student.index')->with([
             'students' => Student::all(),
         ]);
@@ -28,6 +30,8 @@ class StudentController extends Controller
      */
     public function create()
     {
+        view()->share('title', 'Create Student');
+
         return view('student.create')->with([
            'courses' => Course::all(),
         ]);
@@ -62,6 +66,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
+        view()->share('title', 'Student Details - ' . $student->name);
+
         $transactions = $student->transactions;
 
         return view('student.show', compact(['student', 'transactions']));

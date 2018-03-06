@@ -18,6 +18,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        view()->share('title', 'Drona Transaction History');
         $transactions = Transaction::orderBy('bill_date','desc')->with(['transactable','type'])->get();
         return view('transactions.index', compact('transactions'));
     }
@@ -29,6 +30,8 @@ class TransactionController extends Controller
      */
     public function create(Request $request)
     {
+        view()->share('title', 'Create Transaction');
+
         $students         = Student::all();
         $staffs           = Staff::all();
         $transactionTypes = TransactionType::all()->toArray();
@@ -90,6 +93,8 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
+        view()->share('title', 'Edit Transaction');
+
         $transaction->load(['type', 'transactable']);
 
         $students         = Student::all();

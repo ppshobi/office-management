@@ -14,6 +14,8 @@ class CourseController extends Controller
      */
     public function index()
     {
+        view()->share('title', 'Manage Courses');
+
         return view('course.index')->with([
             'courses' => Course::all(),
         ]);
@@ -26,6 +28,8 @@ class CourseController extends Controller
      */
     public function create()
     {
+        view()->share('title', 'Create Course');
+
         return view('course.create');
     }
 

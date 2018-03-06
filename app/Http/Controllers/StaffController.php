@@ -14,6 +14,8 @@ class StaffController extends Controller
      */
     public function index()
     {
+        view()->share('title', 'Manage Staff');
+
         return view('staff.index')->with([
            'staffs' => Staff::all(),
         ]);
@@ -26,6 +28,8 @@ class StaffController extends Controller
      */
     public function create()
     {
+        view()->share('title', 'Add a Staff');
+
         return view('staff.create');
     }
 
@@ -58,6 +62,8 @@ class StaffController extends Controller
      */
     public function show(Staff $staff)
     {
+        view()->share('title', "Staff Details - $staff->name");
+
         $transactions = $staff->transactions;
 
         return view('staff.show', compact(['staff', 'transactions']));
@@ -90,7 +96,7 @@ class StaffController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Staff  $staff
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response`
      */
     public function destroy(Staff $staff)
     {

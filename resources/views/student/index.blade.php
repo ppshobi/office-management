@@ -10,6 +10,9 @@
                             <div class="peer peer-greed">
                                 <h3><i class="fa fa-graduation-cap"></i>Manage Students</h3>
                             </div>
+                            <div class="peer">
+                                <h5 class="text-right">{{"Total " . $students->count() ." Students" }}</h5>
+                            </div>
                         </div>
                     </div>
                     <div class="table-responsive p-20">

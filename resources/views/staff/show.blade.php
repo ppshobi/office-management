@@ -8,7 +8,7 @@
                     <div class="bgc-light-blue-500 c-white p-20">
                         <div class="peers ai-c jc-sb gap-40">
                             <div class="peer peer-greed">
-                                <h3><i class="fa fa-graduation-cap"></i>{{ $staff->id ." - " .$staff->name }}</h3>
+                                <h3><i class="fa fa-user"></i> {{ $staff->name }}</h3>
                             </div>
                         </div>
                     </div>

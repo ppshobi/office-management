@@ -1,55 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 center-block">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Student Details</div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="name" class="col-md-4 control-label">Student Name</label>
-
-                                <div class="col-md-6">
-                                    <p>{{ $student->name }}</p>
-                                </div>
+    <div class="container-fluid">
+        <div class="bd bgc-white">
+            <div class="layers">
+                <div class="layer w-100">
+                    <div class="bgc-light-blue-500 c-white p-20">
+                        <div class="peers ai-c jc-sb gap-40">
+                            <div class="peer peer-greed">
+                                <h3><i class="fa fa-graduation-cap"></i>{{ $student->id ." - " .$student->name }}</h3>
                             </div>
-                            <div class="form-group">
-                                <label for="guardians-name" class="col-md-4 control-label">Guardians Name</label>
-
-                                <div class="col-md-6">
-                                    <p>{{ $student->guardians_name }}</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="guardians-name" class="col-md-4 control-label">Address</label>
-
-                                <div class="col-md-6">
-                                    <p>{{ $student->address }}</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="guardians-name" class="col-md-4 control-label">Phone</label>
-
-                                <div class="col-md-6">
-                                    <p>{{ $student->phone_number }}</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="dob" class="col-md-4 control-label">Date Of Birth</label>
-
-                                <div class="col-md-6">
-                                    <p>{{ $student->dob }}</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="course" class="col-md-4 control-label">Course</label>
-
-                                <div class="col-md-6">
-                                    <p>{{ $student->course->name }}</p>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive p-20">
+                        <div class="col-md-6">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-600">Name: </td>
+                                        <td>{{ $student->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-600">Guardians Name: </td>
+                                        <td>{{ $student->guardians_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-600">Address: </td>
+                                        <td>{{ $student->address }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-600">Phone: </td>
+                                        <td> {{ $student->phone_number }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-600">Date of Birth: </td>
+                                        <td> {{ $student->dob }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-600">Course & Fee </td>
+                                        <td>{{ $student->course->name ." - "}} &#8377; {{ $student->course->price }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <table class="table table-striped" border="1">
                             <thead>
@@ -85,7 +77,6 @@
                             </tbody>
 
                         </table>
-                        {{--<tfoot>{{ $students->links()  }}</tfoot>--}}
                     </div>
                 </div>
             </div>

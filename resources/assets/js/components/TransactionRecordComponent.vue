@@ -25,8 +25,8 @@
     </tfoot>
     <tbody>
         <tr v-for="(transaction,index) in this.items" :id="transaction.id">
-            <td class="export">{{ transaction.id }}</td>
-            <td class="export">{{ transaction.type.name }}</td>
+            <td>{{ transaction.id }}</td>
+            <td>{{ transaction.type.name }}</td>
             <td>&#8377; {{ transaction.amount }}</td>
             <td>{{ transaction.remark }}</td>
             <td width="10%"> {{ transaction.bill_date | moment }}</td>

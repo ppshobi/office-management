@@ -93,7 +93,7 @@ class StaffController extends Controller
     public function destroy(Staff $staff)
     {
         $staff->delete();
-        session()->flash('status', 'Deleted Staff');
-        return redirect('/staff');
+
+        return response()->json(['message' => 'Staff Deleted'], 200);
     }
 }

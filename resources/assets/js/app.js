@@ -21,6 +21,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('action', require('./components/ActionComponent.vue'));
 
 Vue.component('student-index', require('./components/Student/StudentIndex.vue'));
+Vue.component('staff-index', require('./components/Staff/StaffIndex.vue'));
 
 Vue.component('course-index', require('./components/Course/CourseIndex.vue'));
 Vue.component('create-course', require('./components/Course/CreateCourse.vue'));

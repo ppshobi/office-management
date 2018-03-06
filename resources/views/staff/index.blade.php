@@ -1,13 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Current Staffs</div>
-                    <div class="panel-body">
-                        <table class="table table-striped">
+    <div class="container-fluid">
+        <div class="bd bgc-white">
+            <div class="layers">
+                <div class="layer w-100">
+                    <div class="bgc-light-blue-500 c-white p-20">
+                        <div class="peers ai-c jc-sb gap-40">
+                            <div class="peer peer-greed">
+                                <h3><i class="fa fa-graduation-cap"></i>Manage Staff</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive p-20">
+                        <staff-index inline-template>
+                            <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th>Staff ID</th>
@@ -21,7 +28,7 @@
                             </thead>
                             <tbody>
                             @foreach($staffs as $staff)
-                                <tr>
+                                <tr id="staff-{{$staff->id}}">
                                     <td>{{ $staff->id }}</td>
                                     <td>{{ $staff->name }}</td>
                                     <td>{{ $staff->designation }}</td>
@@ -29,19 +36,17 @@
                                     <td>{{ $staff->phone_number }}</td>
                                     <td>{{ $staff->salary }}</td>
                                     <td>
-                                        <form action="/staff/{{ $staff->id }}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-
-                                            <button class="btn btn-danger" type="submit">Delete</button>
-                                        </form>
-
-                                        <button class="btn btn-info">Update</button>
+                                        <action :id="{{ $staff->id }}"
+                                                :index="{{$staff->id}}"
+                                                :url="'staff'"
+                                                :message="'If you delete a staff, The associated transactions and other data will be deleted, You can\'t undo this Operation'"
+                                                @removed="remove({{$staff->id}})"></action>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+                        </staff-index>
                     </div>
                 </div>
             </div>

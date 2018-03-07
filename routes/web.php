@@ -30,8 +30,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/student', 'StudentController@index');
     Route::get('/student/create', 'StudentController@create');
     Route::post('/student', 'StudentController@store');
-    Route::patch('/student/{id}', 'StudentController@update');
+    Route::patch('/student/{student}', 'StudentController@update');
     Route::get('/student/{student}', 'StudentController@show');
+    Route::get('/student/{student}/edit', 'StudentController@edit');
     Route::delete('/student/{student}', 'StudentController@destroy');
 
     Route::get('/staff', 'StaffController@index');

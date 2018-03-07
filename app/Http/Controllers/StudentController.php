@@ -89,7 +89,12 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        dd($student);
+        view()->share('title', 'Update Student');
+
+        return view('student.edit')->with([
+            'courses' => Course::all(),
+            'student' => $student->load('course'),
+        ]);
     }
 
     /**
@@ -101,7 +106,25 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'dob' => 'required',
+            'guardian' => 'required',
+            'phone' => 'required|integer',
+            'address' => 'required',
+            'course' => 'required',
+        ]);
+
+        $student->update([
+            'name' => $request->name,
+            'dob'=> Carbon::createFromFormat('d/m/Y', $request->dob),
+            'guardians_name' => $request->guardian,
+            'address' => $request->address,
+            'phone_number'=> $request->phone,
+            'course_id' => $request->course,
+        ]);
+
+        return response()->json(['message' => 'Student Updated']);
     }
 
     /**

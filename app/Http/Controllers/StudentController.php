@@ -45,17 +45,25 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'dob' => 'required',
+            'guardian' => 'required',
+            'phone' => 'required|integer',
+            'address' => 'required',
+            'course' => 'required',
+        ]);
+
         Student::create([
            'name' => $request->name,
-           'dob'=> $request->dob,
-           'guardians_name' => $request->guardians_name,
+           'dob'=> Carbon::createFromFormat('d/m/Y', $request->dob),
+           'guardians_name' => $request->guardian,
            'address' => $request->address,
            'phone_number'=> $request->phone,
            'course_id' => $request->course,
         ]);
 
-        session()->flash('success', 'Student Created');
-        return redirect('/student/create');
+        return response()->json(['message' => 'Student Created']);
     }
 
     /**

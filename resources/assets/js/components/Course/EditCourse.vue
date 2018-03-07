@@ -26,7 +26,7 @@
          <div class="form-group">
              <div class="col-md-8 col-md-offset-4">
                  <button type="submit" @click="submit" class="btn btn-primary">
-                     Create Course
+                     Update Course
                  </button>
              </div>
          </div>
@@ -45,6 +45,7 @@
 <script>
 
     export default {
+        props:['course'],
         data() {
             return {
                 name:'',
@@ -52,6 +53,11 @@
                 price: '',
                 errors:null
             }
+        },
+        mounted(){
+            this.name=this.course.name,
+            this.price=this.course.price,
+            this.duration=this.course.duration
         },
 
         methods:{
@@ -66,7 +72,7 @@
            submit: function(e) {
                e.preventDefault();
 
-               axios.post('/course',{
+               axios.patch('/course/'+this.course.id,{
                     name: this.name,
                     price: this.price,
                     duration: this.duration,

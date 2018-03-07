@@ -75,7 +75,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        view()->share('title', 'Edit Course');
+
+        return view('course.edit', compact(['course']));
     }
 
     /**
@@ -87,7 +89,19 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $request->validate([
+            'name' =>'required|string',
+            'duration' => 'required|integer|max:999',
+            'price' => 'required|integer'
+        ]);
+
+        $course->update([
+            'name' => $request->name,
+            'duration' => $request->duration,
+            'price' => $request->price,
+        ]);
+
+        return response()->json(['message' => 'Course Details Updated']);
     }
 
     /**

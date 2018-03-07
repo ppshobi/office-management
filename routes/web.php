@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/course', 'CourseController@store');
     Route::get('/course', 'CourseController@index');
     Route::delete('/course/{course}', 'CourseController@destroy');
+    Route::get('/course/{course}/edit', 'CourseController@edit');
+    Route::patch('/course/{course}', 'CourseController@update');
 
     Route::get('/student', 'StudentController@index');
     Route::get('/student/create', 'StudentController@create');

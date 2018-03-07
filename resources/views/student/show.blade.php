@@ -34,7 +34,7 @@
                                     </tr>
                                     <tr>
                                         <td class="fw-600">Date of Birth: </td>
-                                        <td> {{ $student->dob }} </td>
+                                        <td> {{ $student->dob->format('d-M-Y') }} </td>
                                     </tr>
                                     <tr>
                                         <td class="fw-600">Course & Fee </td>

@@ -56,6 +56,9 @@ Route::group(['middleware' => ['auth']], function () {
         return redirect('/dashboard');
     });
 
+    Route::get('/report/transaction', 'ReportController@transaction');
+    Route::post('/report/transaction', 'ReportController@generateTransactionReport');
+
 });
 
 

@@ -23,7 +23,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label class="control-label">All
-                                                <input type="radio" class="form-check-inline" name="type" value="0" checked>
+                                                <input type="radio" name="type" value="false" class="form-check-inline" checked>
                                             </label>
                                         </div>
 
@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label class="control-label">Debit
-                                                <input type="radio" class="form-check-inline" name="type" value="2">
+                                                <input type="radio" class="form-check-inline" name="type" value="0">
                                             </label>
                                         </div>
                                     </div>

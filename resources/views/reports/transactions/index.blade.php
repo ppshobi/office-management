@@ -43,11 +43,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="col-md-6">
                                             <h5 class="fw-300 c-grey-900 mB-10">Start</h5>
-                                            <input class="form-control bill-date" name="start" placeholder="dd/mm/yyyy" />
+                                            <input class="form-control bill-date2" name="start" placeholder="dd/mm/yyyy" />
                                         </div>
                                         <div class="col-md-6">
                                             <h5 class="fw-300 c-grey-900 mB-10">End</h5>
-                                            <input class="form-control bill-date" name="end" placeholder="dd/mm/yyyy" />
+                                            <input class="form-control bill-date2" name="end" placeholder="dd/mm/yyyy" />
                                         </div>
                                     </div>
                                 </div>

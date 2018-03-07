@@ -15,4 +15,10 @@ export default (function () {
         todayHighlight: true
     });
 
+    $('.bill-date2').datepicker({
+        orientation: 'bottom auto',
+        format: 'dd/mm/yyyy',
+        todayHighlight: true
+    });
+
 }());

@@ -53,15 +53,18 @@
                                     <td>{{ $student->guardians_name }}</td>
                                     <td>{{ $student->created_at->toDateString() }}</td>
                                     <td>
-                                        <action :id="{{ $student->id }}"
+                                        <div class="col-md-12 btn-group">
+                                            <action :id="{{ $student->id }}"
                                                 :index="{{$student->id}}"
                                                 :url="'student'"
                                                 :message="'If you delete a student, The associated transactions and other data will be deleted, You can\'t undo this Operation'"
-                                                @removed="remove({{$student->id}})"></action>
-                                        <div class="col-md-12 btn-group">
-                                            <a href="/student/{{$student->id}}">
-                                                <button class="btn btn-success btn-sm">View</button>
-                                            </a>
+                                                @removed="remove({{$student->id}})">
+                                                <a href="/student/{{$student->id}}" slot="view">
+                                                    <button class="btn btn-success btn-sm" >
+                                                        View
+                                                    </button>
+                                                </a>
+                                            </action>
                                         </div>
                                     </td>
                                 </tr>

@@ -1,8 +1,10 @@
 <template>
-    <div class="col-md-12 btn-group">
-        <button class="btn btn-danger btn-sm" @click="remove">Delete</button>
-        <button class="btn btn-primary btn-sm" @click="update">Update</button>
-    </div>
+<div class="btn-group">
+    <button class="btn btn-danger btn-sm" @click="remove">Delete</button>
+    <button class="btn btn-primary btn-sm" @click="update">Update</button>
+    <slot name="view">
+    </slot>
+</div>
 </template>
 
 <script>

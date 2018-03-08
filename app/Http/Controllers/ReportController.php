@@ -15,7 +15,10 @@ class ReportController extends Controller
 
     public function generateTransactionReport(Request $request)
     {
-        $query = Transaction::select('*');
+        $start = '';
+        $end = '';
+
+        $query = Transaction::select('*')->with('type');
 
         if($request->start)
         {
@@ -29,6 +32,7 @@ class ReportController extends Controller
             $query = $query->where('bill_date', '<=', $end);
         }
 
+
         if($type = $request->type && ($request->type == "0" || $request->type=="1"))
         {
             $query = $query->whereHas('type', function ($q) use($type) {
@@ -38,6 +42,24 @@ class ReportController extends Controller
 
         $transactions = $query->get();
 
-        return view('reports.transactions.report', compact('transactions'));
+        return view('reports.transactions.report')->with([
+            'transactions' => $transactions,
+            'from'         => $start ? $start->format('d-M-Y') : '',
+            'to'           => $end ? $end->format('d-M-Y') : '',
+            'generatedOn'  => Carbon::now()->format('d-M-Y h:i:s'),
+            'credit'       => $this->getTotalCredits($transactions),
+            'debit'        => $this->getTotalDebits($transactions),
+        ]);
     }
+
+    private function getTotalCredits($transactions)
+    {
+        return $transactions->where('type.is_credit', 1)->sum('amount');
+    }
+
+    private function getTotalDebits($transactions)
+    {
+        return $transactions->where('type.is_credit', 0)->sum('amount');
+    }
+
 }

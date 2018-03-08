@@ -13,20 +13,38 @@
                         <div class="layers bdB">
                             <div class="layer w-100 bdT pY-5">
                                 <div class="peers ai-c jc-sb fxw-nw">
-                                    <div class="peer"><span>Wind</span></div>
-                                    <div class="peer ta-r"><span class="fw-600 c-grey-800">10km/h</span></div>
+                                    <div class="peer"><span>Report Generated On</span></div>
+                                    <div class="peer ta-r"><span class="fw-600 c-grey-800">{{ $generatedOn }}</span></div>
                                 </div>
                             </div>
                             <div class="layer w-100 bdT pY-5">
                                 <div class="peers ai-c jc-sb fxw-nw">
-                                    <div class="peer"><span>Sunrise</span></div>
-                                    <div class="peer ta-r"><span class="fw-600 c-grey-800">05:00 AM</span></div>
+                                    <div class="peer"><span>Total Credit</span></div>
+                                    <div class="peer ta-r"><span class="fw-600 c-grey-800">&#8377;{{ $credit }}</span></div>
                                 </div>
                             </div>
                             <div class="layer w-100 bdT pY-5">
                                 <div class="peers ai-c jc-sb fxw-nw">
-                                    <div class="peer"><span>Pressure</span></div>
-                                    <div class="peer ta-r"><span class="fw-600 c-grey-800">1B</span></div>
+                                    <div class="peer"><span>Total Debit</span></div>
+                                    <div class="peer ta-r"><span class="fw-600 c-grey-800">&#8377;{{ $debit }}</span></span></div>
+                                </div>
+                            </div>
+                            <div class="layer w-100 bdT pY-5">
+                                <div class="peers ai-c jc-sb fxw-nw">
+                                    <div class="peer"><span>Date Range</span></div>
+                                    <div class="peer ta-r">
+                                        <span class="fw-600 c-grey-800">
+                                            @if($from && $to)
+                                                {{$from}} To {{$to}}
+                                            @elseif($from)
+                                                {{ "All Since" . $from }}
+                                            @elseif($to)
+                                                {{ "All to" . $to }}
+                                            @else
+                                                {{ "All Transactions" }}
+                                            @endif
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,6 +65,10 @@
                             <div class="layer w-100 bdT pY-15">
                                 <div class="peers ai-c jc-sb fxw-nw">
 
+                                </div>
+                            </div>
+                            <div class="layer w-100 bdT pY-15">
+                                <div class="peers ai-c jc-sb fxw-nw">
                                 </div>
                             </div>
                             <div class="layer w-100 bdT pY-15">

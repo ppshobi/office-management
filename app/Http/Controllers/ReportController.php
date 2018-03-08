@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Transaction;
+use PDF;
 use Carbon\Carbon;
+use App\Transaction;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -41,6 +42,17 @@ class ReportController extends Controller
         }
 
         $transactions = $query->get();
+
+        $pdf = PDF::loadView('reports.transactions.report', [
+            'transactions' => $transactions,
+            'from'         => $start ? $start->format('d-M-Y') : '',
+            'to'           => $end ? $end->format('d-M-Y') : '',
+            'generatedOn'  => Carbon::now()->format('d-M-Y h:i:s'),
+            'credit'       => $this->getTotalCredits($transactions),
+            'debit'        => $this->getTotalDebits($transactions),
+        ]);
+
+        return $pdf->download('transaction_summary.pdf');
 
         return view('reports.transactions.report')->with([
             'transactions' => $transactions,

@@ -35,6 +35,9 @@ class ReportController extends Controller
                         $q->where('is_credit', $type);
                     });
         }
-        dd($data = $query->get());
+
+        $transactions = $query->get();
+
+        return view('reports.transactions.report', compact('transactions'));
     }
 }

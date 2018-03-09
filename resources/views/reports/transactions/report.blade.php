@@ -91,16 +91,6 @@
                 <th>With Respect To</th>
             </tr>
             </thead>
-            <tfoot>
-            <tr>
-                <th>Transaction ID</th>
-                <th>Transaction Type</th>
-                <th>Amount</th>
-                <th>Remark</th>
-                <th>Date</th>
-                <th>With Respect To</th>
-            </tr>
-            </tfoot>
             <tbody>
             @forelse($transactions as $transaction)
                 <tr>

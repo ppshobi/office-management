@@ -70,8 +70,17 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" @click="submit" class="btn btn-primary">
-                                        Create Staff
+                                        Update Staff
                                     </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <div class="alert alert-danger" v-if="errors">
+                                        <ul>
+                                            <li v-for="error in this.errors">@{{ error[0] }}</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Staff;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -41,17 +42,25 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'         => 'required',
+            'address'      => 'required',
+            'dob'          => 'required',
+            'phone'        => 'required',
+            'salary'       => 'required',
+            'designation'  => 'required',
+        ]);
+
         Staff::create([
             'name'         => $request->name,
             'address'      => $request->address,
-            'dob'          => $request->dob,
+            'dob'          => Carbon::createFromFormat('d/m/Y', $request->dob),
             'phone_number' => $request->phone,
             'salary'       => $request->salary,
             'designation'  => $request->designation,
         ]);
 
-        session()->flash('status', 'Staff Created');
-        return redirect('/staff');
+        return response()->json(['message' => 'Staff Created']);
     }
 
     /**
@@ -77,7 +86,9 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        //
+        view()->share('title', 'Edit Staff');
+
+        return view('staff.edit', compact('staff'));
     }
 
     /**

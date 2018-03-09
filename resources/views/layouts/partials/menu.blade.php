@@ -117,9 +117,6 @@
                     <li class="nav-item dropdown">
                         <a href="/report/transaction"><span>Transactions</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="/report/student"><span>Students</span></a>
-                    </li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -129,9 +126,6 @@
                     <span class="arrow"><i class="ti-angle-right"></i></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="nav-item dropdown">
-                        <a href="/users"><span>Users</span></a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a href="/backup"><span>Backup Database</span></a>
                     </li>

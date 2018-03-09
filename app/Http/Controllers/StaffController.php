@@ -100,7 +100,25 @@ class StaffController extends Controller
      */
     public function update(Request $request, Staff $staff)
     {
-        //
+        $request->validate([
+            'name'         => 'required',
+            'address'      => 'required',
+            'dob'          => 'required',
+            'phone'        => 'required',
+            'salary'       => 'required',
+            'designation'  => 'required',
+        ]);
+
+        $staff->update([
+            'name'         => $request->name,
+            'address'      => $request->address,
+            'dob'          => Carbon::createFromFormat('d/m/Y', $request->dob),
+            'phone_number' => $request->phone,
+            'salary'       => $request->salary,
+            'designation'  => $request->designation,
+        ]);
+
+        return response()->json(['message' => 'Staff Updated']);
     }
 
     /**

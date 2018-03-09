@@ -26,6 +26,7 @@ Vue.component('edit-student', require('./components/Student/EditStudent.vue'));
 
 Vue.component('staff-index', require('./components/Staff/StaffIndex.vue'));
 Vue.component('create-staff', require('./components/Staff/CreateStaff.vue'));
+Vue.component('edit-staff', require('./components/Staff/EditStaff.vue'));
 
 Vue.component('course-index', require('./components/Course/CourseIndex.vue'));
 Vue.component('create-course', require('./components/Course/CreateCourse.vue'));

@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('name',50);
             $table->string('duration',3);
             $table->integer('price');
+            $table->integer('is_recurring');
             $table->timestamps();
         });
     }

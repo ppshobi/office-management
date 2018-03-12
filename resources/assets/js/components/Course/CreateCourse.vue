@@ -16,9 +16,9 @@
              </div>
          </div>
           <div class="form-group">
-              <label for="feeType" class="col-md-4 control-label">Monthly Fee</label>
+              <label for="recurring" class="col-md-4 control-label">Monthly Fee</label>
               <div class="col-md-1">
-                  <input id="feeType" type="checkbox" v-model="feeType" name="feeType">
+                  <input id="recurring" type="checkbox" v-model="recurring" name="recurring">
               </div>
           </div>
          <div class="form-group">
@@ -56,7 +56,7 @@
                 name:'',
                 duration: '',
                 price: '',
-                feeType: false,
+                recurring: false,
                 errors:null
             }
         },
@@ -67,7 +67,7 @@
                this.name = '';
                this.price = '';
                this.duration = '';
-               this.feeType = false;
+               this.recurring = false;
                this.errors = null;
            },
 
@@ -78,7 +78,7 @@
                     name: this.name,
                     price: this.price,
                     duration: this.duration,
-                    feeType: this.feeType,
+                    recurring: this.recurring,
                }).then((resp) => {
                     toastr.success(resp.data.message);
                     this.reset();

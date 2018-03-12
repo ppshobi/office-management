@@ -13,14 +13,15 @@ class TransactionTypesSeeder extends Seeder
     public function run()
     {
         $transactionTypes = [
-            'Debit' => 0,
-            'Credit' => 1,
-            'Refund' => 0,
-            'Fees' => 1,
-            'Electricity' => 0,
-            'Rent' => 0,
-            'Stationary' => 0,
-            'Salary' => 0,
+            'Debit'          => 0,
+            'Refund'         => 0,
+            'Electricity'    => 0,
+            'Rent'           => 0,
+            'Stationary'     => 0,
+            'Salary'         => 0,
+            'Credit'         => 1,
+            'Fees'           => 1,
+            'Admission Fees' => 1,
         ];
 
         foreach ($transactionTypes as $name => $is_credit)

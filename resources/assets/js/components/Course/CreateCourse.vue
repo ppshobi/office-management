@@ -15,6 +15,12 @@
                  placeholder="Enter Duration in months" required>
              </div>
          </div>
+          <div class="form-group">
+              <label for="feeType" class="col-md-4 control-label">Monthly Fee</label>
+              <div class="col-md-1">
+                  <input id="feeType" type="checkbox" v-model="feeType" name="feeType">
+              </div>
+          </div>
          <div class="form-group">
              <label for="fees" class="col-md-4 control-label">Course Fees</label>
 
@@ -50,6 +56,7 @@
                 name:'',
                 duration: '',
                 price: '',
+                feeType: false,
                 errors:null
             }
         },
@@ -60,6 +67,7 @@
                this.name = '';
                this.price = '';
                this.duration = '';
+               this.feeType = false;
                this.errors = null;
            },
 
@@ -70,6 +78,7 @@
                     name: this.name,
                     price: this.price,
                     duration: this.duration,
+                    feeType: this.feeType,
                }).then((resp) => {
                     toastr.success(resp.data.message);
                     this.reset();

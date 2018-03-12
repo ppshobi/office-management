@@ -175,7 +175,7 @@
 
                 this.showAmount = true;
 
-                if(category == 4) {
+                if(category == 4 || category == 9) {
                    this.showStaff = false;
                    this.showStudent = true;
                 }

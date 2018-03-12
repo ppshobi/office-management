@@ -156,7 +156,7 @@
                     this.staff_id = this.transaction.transactableid;
                }
 
-               if(this.transaction.type.id == 4){
+               if(this.transaction.type.id == 4 || this.transaction.type.id == 9){
                    this.student_id = this.transaction.transactable.id;
                }
 

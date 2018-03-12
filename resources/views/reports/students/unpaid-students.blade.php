@@ -41,9 +41,13 @@
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->course->name }} - {{ $student->course->price }}</td>
                                     <td>{{ $student->phone_number }}</td>
-                                    <td>{{ $student->transactions->first()->bill_date->format('d-M-Y') }}</td>
+                                    <td>{{ $student->transactions->first()->bill_date->format('d-M-Y') }}
+                                        - &#8377;{{ $student->transactions->first()->amount }}
+                                    </td>
                                     <td>
-
+                                        <a href="/transaction/create">
+                                            <button class="btn btn-success btn-sm">Enter Payment</button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

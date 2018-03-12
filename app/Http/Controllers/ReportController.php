@@ -75,16 +75,13 @@ class ReportController extends Controller
             return $q->orderBy('bill_date', 'DESC');
         }]);
 
-        $students = $query->get();
+        $students  = $query->get();
 
         $lastMonth = Carbon::now()->firstOfMonth()->subMonth();
 
-        $students = $students->filter(function($value) use ($lastMonth) {
-                        if($value->transactions->first()->bill_date <= $lastMonth)
-                        {
-                            return true;
-                        }
-                    });
+        $students  = $students->filter(function ($value) use ($lastMonth) {
+            return $value->transactions->first()->bill_date <= $lastMonth;
+        });
 
 
 

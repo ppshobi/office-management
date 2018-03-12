@@ -13,16 +13,14 @@
                         </div>
                     </div>
                     <div class="table-responsive p-20">
-                        <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>Student ID</th>
                                 <th>Student Name</th>
                                 <th>Course</th>
-                                <th>Address</th>
                                 <th>Phone Number</th>
-                                <th>Guardians Name</th>
-                                <th>Join Date</th>
+                                <th>Last Payment</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -31,10 +29,8 @@
                                 <th>Student ID</th>
                                 <th>Student Name</th>
                                 <th>Course</th>
-                                <th>Address</th>
                                 <th>Phone Number</th>
-                                <th>Guardians Name</th>
-                                <th>Join Date</th>
+                                <th>Last Payment</th>
                                 <th>Actions</th>
                             </tr>
                             </tfoot>
@@ -43,25 +39,11 @@
                                 <tr id="student-{{$student->id}}">
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
-                                    <td>{{ $student->course->name }}</td>
-                                    <td>{{ $student->address }}</td>
+                                    <td>{{ $student->course->name }} - {{ $student->course->price }}</td>
                                     <td>{{ $student->phone_number }}</td>
-                                    <td>{{ $student->guardians_name }}</td>
-                                    <td>{{ $student->created_at->toDateString() }}</td>
+                                    <td>{{ $student->transactions->first()->bill_date->format('d-M-Y') }}</td>
                                     <td>
-                                        <div class="col-md-12 btn-group">
-                                            <action :id="{{ $student->id }}"
-                                                    :index="{{$student->id}}"
-                                                    :url="'student'"
-                                                    :message="'If you delete a student, The associated transactions and other data will be deleted, You can\'t undo this Operation'"
-                                                    @removed="remove({{$student->id}})">
-                                                <a href="/student/{{$student->id}}" slot="view">
-                                                    <button class="btn btn-success btn-sm" >
-                                                        View
-                                                    </button>
-                                                </a>
-                                            </action>
-                                        </div>
+
                                     </td>
                                 </tr>
                             @endforeach

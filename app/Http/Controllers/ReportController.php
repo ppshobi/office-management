@@ -66,7 +66,27 @@ class ReportController extends Controller
 
     public function getUnpaidStudents()
     {
-        $students = Student::all();
+        $query = Student::whereHas('course', function($q){
+            return $q->where('is_recurring', 1);
+        });
+
+
+        $query = $query->with(['transactions' => function($q) {
+            return $q->orderBy('bill_date', 'DESC');
+        }]);
+
+        $students = $query->get();
+
+        $lastMonth = Carbon::now()->firstOfMonth()->subMonth();
+
+        $students = $students->filter(function($value) use ($lastMonth) {
+                        if($value->transactions->first()->bill_date <= $lastMonth)
+                        {
+                            return true;
+                        }
+                    });
+
+
 
         return view('reports.students.unpaid-students', compact('students'));
     }

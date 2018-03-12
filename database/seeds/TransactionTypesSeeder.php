@@ -16,11 +16,11 @@ class TransactionTypesSeeder extends Seeder
             'Debit'          => 0,
             'Refund'         => 0,
             'Electricity'    => 0,
+            'Fees'           => 1,
             'Rent'           => 0,
             'Stationary'     => 0,
-            'Salary'         => 0,
             'Credit'         => 1,
-            'Fees'           => 1,
+            'Salary'         => 0,
             'Admission Fees' => 1,
         ];
 

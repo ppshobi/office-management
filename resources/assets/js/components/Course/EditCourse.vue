@@ -1,4 +1,4 @@
-<template>
+    <template>
     <form class="form-horizontal col-md-12" id="transaction">
          <div class="form-group">
             <label for="course-name" class="col-md-4 control-label">Course Name</label>
@@ -14,6 +14,12 @@
                  <input id="duration" type="number" v-model="duration" class="form-control" name="duration"
                  placeholder="Enter Duration in months" required>
              </div>
+         </div>
+         <div class="form-group">
+            <label for="recurring" class="col-md-4 control-label">Monthly Fee</label>
+            <div class="col-md-1">
+               <input id="recurring" type="checkbox" v-model="recurring" name="recurring">
+            </div>
          </div>
          <div class="form-group">
              <label for="fees" class="col-md-4 control-label">Course Fees</label>
@@ -51,13 +57,15 @@
                 name:'',
                 duration: '',
                 price: '',
+                recurring: false,
                 errors:null
             }
         },
         mounted(){
-            this.name=this.course.name,
-            this.price=this.course.price,
-            this.duration=this.course.duration
+            this.name=this.course.name;
+            this.price=this.course.price;
+            this.duration=this.course.duration;
+            this.recurring = this.course.is_recurring;
         },
 
         methods:{
@@ -67,6 +75,7 @@
                this.price = '';
                this.duration = '';
                this.errors = null;
+               this.recurring=false;
            },
 
            submit: function(e) {
@@ -76,6 +85,7 @@
                     name: this.name,
                     price: this.price,
                     duration: this.duration,
+                    recurring: this.recurring,
                }).then((resp) => {
                     toastr.success(resp.data.message);
                     this.reset();

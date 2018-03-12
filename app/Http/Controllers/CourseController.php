@@ -44,13 +44,15 @@ class CourseController extends Controller
         $request->validate([
             'name' =>'required|string',
             'duration' => 'required|integer|max:999',
-            'price' => 'required|integer'
+            'price' => 'required|integer',
+            'recurring' => 'required|bool',
         ]);
 
         Course::create([
             'name' => $request->name,
             'duration' => $request->duration,
             'price' => $request->price,
+            'is_recurring' => $request->recurring,
         ]);
 
         return response()->json(['message' => 'Course Created'], 200);
@@ -92,13 +94,15 @@ class CourseController extends Controller
         $request->validate([
             'name' =>'required|string',
             'duration' => 'required|integer|max:999',
-            'price' => 'required|integer'
+            'price' => 'required|integer',
+            'is_recurring' => $request->recurring,
         ]);
 
         $course->update([
             'name' => $request->name,
             'duration' => $request->duration,
             'price' => $request->price,
+            'is_recurring' => $request->recurring,
         ]);
 
         return response()->json(['message' => 'Course Details Updated']);

@@ -118,6 +118,11 @@
                         <a href="/report/transaction"><span>Transactions</span></a>
                     </li>
                 </ul>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown">
+                        <a href="/report/students/unpaid"><span>Unpaid Students</span></a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">

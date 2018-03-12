@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use Mpdf\Mpdf;
 use Carbon\Carbon;
 use App\Transaction;
@@ -63,4 +64,10 @@ class ReportController extends Controller
         return $transactions->where('type.is_credit', 0)->sum('amount');
     }
 
+    public function getUnpaidStudents()
+    {
+        $students = Student::all();
+
+        return view('reports.students.unpaid-students', compact('students'));
+    }
 }

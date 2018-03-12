@@ -24,6 +24,7 @@
                                 <th class=" bdwT-0">Name</th>
                                 <th class=" bdwT-0">Duration</th>
                                 <th class=" bdwT-0">Fee</th>
+                                <th class=" bdwT-0">Fee Type</th>
                                 <th class=" bdwT-0">Actions</th>
                             </tr>
                             </thead>
@@ -35,6 +36,13 @@
                                     <td>{{ $course->duration }} Months</td>
                                     <td>
                                         <span class="text-success">&#8377; {{ $course->price }}</span>
+                                    </td>
+                                    <td>
+                                        @if($course->is_recurring)
+                                            <span class="c-orange-500"> Monthly </span>
+                                        @else
+                                            <span class="c-light-blue-500"> Whole Fee </span>
+                                        @endif
                                     </td>
                                     <td>
                                         <action :id="{{ $course->id }}"

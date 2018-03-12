@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/report/transaction', 'ReportController@transaction');
     Route::post('/report/transaction', 'ReportController@generateTransactionReport');
+    Route::get('/report/students/unpaid', 'ReportController@getUnpaidStudents');
 
 });
 

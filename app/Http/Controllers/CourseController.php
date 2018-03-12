@@ -52,7 +52,7 @@ class CourseController extends Controller
             'name' => $request->name,
             'duration' => $request->duration,
             'price' => $request->price,
-            'is_recurring' => $request->recurring,
+            'is_recurring' => (int) $request->recurring,
         ]);
 
         return response()->json(['message' => 'Course Created'], 200);
@@ -95,7 +95,7 @@ class CourseController extends Controller
             'name' =>'required|string',
             'duration' => 'required|integer|max:999',
             'price' => 'required|integer',
-            'is_recurring' => $request->recurring,
+            'recurring' => 'required|bool',
         ]);
 
         $course->update([
